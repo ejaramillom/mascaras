@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const Bottle = require("./models/bottle.model").Bottle;
 const Brush = require("./models/brush.model").Brush;
-const Cap = require("./models/cap.model");
+const Cap = require("./models/cap.model").Cap;
 const Rod = require("./models/rod.model").Rod;
-const Wiper = require("./models/wiper.model");
+const Wiper = require("./models/wiper.model").Wiper;
 const Build = require("./models/build.model");
 
 router.get("/", async (req, res, next) => {
   try {
+    console.log(">");
     console.log("succesfully fetched index");
     return "welcome!";
   } catch (err) {
@@ -20,6 +21,7 @@ router.get("/", async (req, res, next) => {
 router.get("/bottle", async (req, res, next) => {
   try {
     const bottle = await Bottle.find();
+    console.log(">");
     console.log("succesfully found bottles list");
     return res.send(bottle);
   } catch (err) {
@@ -84,6 +86,7 @@ router.get("/build", async (req, res, next) => {
 router.get("/brush", async (req, res, next) => {
   try {
     const brush = await Brush.find();
+    console.log(">");
     console.log("succesfully found brushes list");
     return res.send(brush);
   } catch (err) {
@@ -140,6 +143,7 @@ router.post("/brush", async (req, res, next) => {
 router.get("/cap", async (req, res, next) => {
   try {
     const cap = await Cap.find();
+    console.log(">");
     console.log("succesfully found caps list");
     return res.send(cap);
   } catch (err) {
@@ -151,6 +155,7 @@ router.get("/cap", async (req, res, next) => {
 router.get("/rod", async (req, res, next) => {
   try {
     const rod = await Rod.find();
+    console.log(">");
     console.log("succesfully found rods list");
     return res.send(rod);
   } catch (err) {
@@ -202,9 +207,47 @@ router.post("/rod", async (req, res, next) => {
 
 });
 
+router.post("/wiper", async (req, res, next) => {
+  const data = {
+    name: "mascara",
+    "wiper.name": req.body.name,
+    "wiper.drawing": req.body.drawing,
+    "wiper.mold": req.body.mold
+  };
+
+  try {
+    const already_wiper = await Build.findOne({
+      name: "mascara",
+    });
+    if (already_wiper === null) {
+      const build = new Build(data);
+      await build.save();
+      console.log("Wiper added to build!");
+      res.status(200).send("Wiper added to your build list!");
+    } else if (already_wiper)  {
+      const build = await Build.updateOne(
+        { name: "mascara" },
+        {
+          "wiper.name": req.body.name,
+          "wiper.drawing": req.body.drawing,
+          "wiper.mold": req.body.mold,
+        }
+      );
+      console.log("wiper updated to build!");
+      res.status(200).send("Wiper updated in build list!");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+    return;
+  }
+
+});
+
 router.get("/wiper", async (req, res, next) => {
   try {
     const wiper = await Wiper.find();
+    console.log(">");
     console.log("succesfully found wipers list");
     return res.send(wiper);
   } catch (err) {

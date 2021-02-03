@@ -30,6 +30,12 @@ const MascaraBuild = () => {
             <li key = { element.rod.thread }>{ element.rod.thread }</li>
           </div>
           : "" }
+        {element.wiper ?
+          <div>
+            <li key = { element.wiper.name }>{ element.wiper.name }</li>
+            <li key = { element.wiper.drawing }>{ element.wiper.drawing }</li>
+          </div>
+          : "" }
       </div>
       )}
     </Section>

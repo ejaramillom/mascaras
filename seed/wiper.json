@@ -1,6 +1,4 @@
-{
-	"wiper": {
-		"record": [
+[
 			{
 				"name": "ESCURRIDOR DEL BARBIE",
 				"drawing": "3445",
@@ -121,7 +119,4 @@
 				"drawing": "2180",
 				"mold": "9019"
 			}
-		],
-		"_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance"
-	}
-}
+]

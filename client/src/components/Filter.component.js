@@ -13,6 +13,7 @@ export const BottleFilter = (props) => {
   const bottle = props.bottle;
   const bottles = props.bottles;
   const rod = props.rod;
+  const brush = props.brush;
   const setBuildClick = props.setBuildClick;
   const buildClick = props.buildClick;
 
@@ -56,10 +57,11 @@ export const BottleFilter = (props) => {
             <Tile kind="parent">
               <Tile renderAs="article" kind="child" notification color="light">
                 <Heading size={7} renderAs="h6">{element.name}
-                <br/>
-                <br/>
+                  <br/>
+                  <br/>
                   <Tag color="dark" className="App"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Thread </Tag>
                   <Tag color="info"> {element.thread}</Tag>
                 <br/>
@@ -84,6 +86,51 @@ export const BottleFilter = (props) => {
         ))}
       </div>
     );
+  } else if (rod && rod.thread && brush && brush.brushLength){
+    const filteredBottles = bottles.filter( element => {
+      let gap = (Number(element.depth) - (Number(rod.dimensions.length) + Number(brush.brushLength)) );
+      if (gap > 2 && gap < 6 && (element.thread.toLowerCase().indexOf(rod.thread.toLowerCase()) !== -1) ){
+        return element;
+      }
+    });
+
+    return (
+      <div>
+        {filteredBottles.map((element) => (
+          <Tile kind="ancestor" className="App">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification color="light">
+                <Heading size={7} renderAs="h6">{element.name}
+                  <br/>
+                  <br/>
+                  <Tag color="dark" className="App"> Drawing </Tag>
+                  <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
+                  <Tag color="dark"> Thread </Tag>
+                  <Tag color="info"> {element.thread}</Tag>
+                  <br/>
+                  <Tag color="dark"> Depth </Tag>
+                  <Tag color="info"> {element.depth}</Tag>
+                  <br/>
+                  <br/>
+                  <Button
+                    type="submit"
+                    color="info"
+                    onClick={() => {
+                      addBottleClick(element);
+                    }}
+                    size="small"
+                  >
+                    Add Bottle
+                  </Button>
+                </Heading>
+              </Tile>
+            </Tile>
+          </Tile>
+        ))}
+      </div>
+    );
+
   } else if (rod && rod.thread){
     const filteredBottles = bottles.filter( element => {
       return element.thread.toLowerCase().indexOf(rod.thread.toLowerCase()) !== -1;
@@ -96,27 +143,28 @@ export const BottleFilter = (props) => {
             <Tile kind="parent">
               <Tile renderAs="article" kind="child" notification color="light">
                 <Heading size={7} renderAs="h6">{element.name}
-                <br/>
-                <br/>
+                  <br/>
+                  <br/>
                   <Tag color="dark" className="App"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Thread </Tag>
                   <Tag color="info"> {element.thread}</Tag>
-                <br/>
+                  <br/>
                   <Tag color="dark"> Depth </Tag>
                   <Tag color="info"> {element.depth}</Tag>
-                <br/>
-                <br/>
-                <Button
-                  type="submit"
-                  color="info"
-                  onClick={() => {
-                    addBottleClick(element);
-                  }}
-                  size="small"
-                >
-                  Add Bottle
-                </Button>
+                  <br/>
+                  <br/>
+                  <Button
+                    type="submit"
+                    color="info"
+                    onClick={() => {
+                      addBottleClick(element);
+                    }}
+                    size="small"
+                  >
+                    Add Bottle
+                  </Button>
                 </Heading>
               </Tile>
             </Tile>
@@ -133,27 +181,28 @@ export const BottleFilter = (props) => {
           <Tile kind="parent">
             <Tile renderAs="article" kind="child" notification color="light">
               <Heading size={7} renderAs="h6">{element.name}
-              <br/>
-              <br/>
+                <br/>
+                <br/>
                 <Tag color="dark" className="App"> Drawing </Tag>
                 <Tag color="info"> {element.drawing}</Tag>
+                <br/>
                 <Tag color="dark"> Thread </Tag>
                 <Tag color="info"> {element.thread}</Tag>
-              <br/>
+                <br/>
                 <Tag color="dark"> Depth </Tag>
                 <Tag color="info"> {element.depth}</Tag>
-              <br/>
-              <br/>
-              <Button
-                type="submit"
-                color="info"
-                onClick={() => {
-                  addBottleClick(element);
-                }}
-                size="small"
-              >
-                Add Bottle
-              </Button>
+                <br/>
+                <br/>
+                <Button
+                  type="submit"
+                  color="info"
+                  onClick={() => {
+                    addBottleClick(element);
+                  }}
+                  size="small"
+                >
+                  Add Bottle
+                </Button>
               </Heading>
             </Tile>
           </Tile>
@@ -223,13 +272,18 @@ export const BrushFilter = (props) => {
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Type </Tag>
                   <Tag color="info"> {element.type}</Tag>
                   <br/>
-                  <Tag color="dark"> Lenght </Tag>
+                  <Tag color="dark"> Length </Tag>
                   <Tag color="info"> {element.brushLength}</Tag>
+                  <br/>
                   <Tag color="dark"> Shaft </Tag>
                   <Tag color="info"> {element.shaftDiameter}</Tag>
+                  <br/>
+                  <Tag color="dark"> Brush </Tag>
+                  <Tag color="info"> {element.brushDiameter}</Tag>
                   <br/>
                   <br/>
                   <Button
@@ -272,13 +326,18 @@ export const BrushFilter = (props) => {
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Type </Tag>
                   <Tag color="info"> {element.type}</Tag>
                   <br/>
-                  <Tag color="dark"> Lenght </Tag>
+                  <Tag color="dark"> Length </Tag>
                   <Tag color="info"> {element.brushLength}</Tag>
+                  <br/>
                   <Tag color="dark"> Shaft </Tag>
                   <Tag color="info"> {element.shaftDiameter}</Tag>
+                  <br/>
+                  <Tag color="dark"> Brush </Tag>
+                  <Tag color="info"> {element.brushDiameter}</Tag>
                   <br/>
                   <br/>
                   <Button
@@ -313,13 +372,18 @@ export const BrushFilter = (props) => {
                 <br/>
                 <Tag color="dark"> Drawing </Tag>
                 <Tag color="info"> {element.drawing}</Tag>
+                <br/>
                 <Tag color="dark"> Type </Tag>
                 <Tag color="info"> {element.type}</Tag>
                 <br/>
-                <Tag color="dark"> Lenght </Tag>
+                <Tag color="dark"> Length </Tag>
                 <Tag color="info"> {element.brushLength}</Tag>
+                <br/>
                 <Tag color="dark"> Shaft </Tag>
                 <Tag color="info"> {element.shaftDiameter}</Tag>
+                <br/>
+                <Tag color="dark"> Brush </Tag>
+                <Tag color="info"> {element.brushDiameter}</Tag>
                 <br/>
                 <br/>
                 <Button
@@ -400,13 +464,16 @@ export const RodFilter = (props) => {
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Thread </Tag>
                   <Tag color="info"> {element.thread}</Tag>
                   <br/>
                   <Tag color="dark"> Length </Tag>
                   <Tag color="info"> {element.dimensions.length}</Tag>
+                  <br/>
                   <Tag color="dark"> Shaft </Tag>
                   <Tag color="info"> {element.dimensions.brushDiameter}</Tag>
+                  <br/>
                   <Tag color="dark"> Rod </Tag>
                   <Tag color="info"> {element.dimensions.rodDiameter}</Tag>
                   <br/>
@@ -428,12 +495,12 @@ export const RodFilter = (props) => {
         ))}
       </div>
     );
-  } else if (bottle && bottle.thread){
+
+  } else if (bottle && bottle.thread && bottle.depth){
     const filteredRods = rods.filter( element => {
-      if (element.thread) {
+      let depthDiff = (Number(bottle.depth) - Number(element.dimensions.length));
+      if (element.thread && (depthDiff > 0)) {
         return element.thread.toLowerCase().indexOf(bottle.thread.toLowerCase()) !== -1;
-      } else {
-        return element;
       }
     });
 
@@ -448,13 +515,16 @@ export const RodFilter = (props) => {
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
                   <Tag color="dark"> Thread </Tag>
                   <Tag color="info"> {element.thread}</Tag>
                   <br/>
                   <Tag color="dark"> Length </Tag>
                   <Tag color="info"> {element.dimensions.length}</Tag>
+                  <br/>
                   <Tag color="dark"> Shaft </Tag>
                   <Tag color="info"> {element.dimensions.brushDiameter}</Tag>
+                  <br/>
                   <Tag color="dark"> Rod </Tag>
                   <Tag color="info"> {element.dimensions.rodDiameter}</Tag>
                   <br/>
@@ -476,63 +546,126 @@ export const RodFilter = (props) => {
         ))}
       </div>
   );
+
+  } else if (bottle && bottle.thread){
+    const filteredRods = rods.filter( element => {
+      if (element.thread) {
+        return element.thread.toLowerCase().indexOf(bottle.thread.toLowerCase()) !== -1;
+      }
+    });
+
+    return (
+      <div>
+        {filteredRods.map((element) => (
+          <Tile kind="ancestor" className="App">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification color="light">
+                <Heading size={7} renderAs="h6" >{element.name}
+                  <br/>
+                  <br/>
+                  <Tag color="dark"> Drawing </Tag>
+                  <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
+                  <Tag color="dark"> Thread </Tag>
+                  <Tag color="info"> {element.thread}</Tag>
+                  <br/>
+                  <Tag color="dark"> Length </Tag>
+                  <Tag color="info"> {element.dimensions.length}</Tag>
+                  <br/>
+                  <Tag color="dark"> Shaft </Tag>
+                  <Tag color="info"> {element.dimensions.brushDiameter}</Tag>
+                  <br/>
+                  <Tag color="dark"> Rod </Tag>
+                  <Tag color="info"> {element.dimensions.rodDiameter}</Tag>
+                  <br/>
+                  <br/>
+                  <Button
+                    type="submit"
+                    color="info"
+                    size="small"
+                    onClick={() => {
+                      addRodClick(element);
+                    }}
+                  >
+                    Add Rod
+                  </Button>
+                </Heading>
+              </Tile>
+            </Tile>
+          </Tile>
+        ))}
+      </div>
+  );
+
   } else if (brush && brush.type){
     const filteredRods = rods.filter( element => {
       let brushRodDiff =  Number(element.dimensions.brushDiameter) - Number(brush.shaftDiameter);
-      if (brush.type === "INYECTADO") {
+      let wipeDelta =  Number(brush.brushDiameter) - Number(element.dimensions.rodDiameter) ;
+      if (brush.type === "INYECTADO" && wipeDelta > 0.5 && wipeDelta < 4.8) {
         if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
           return element;
-        } else {
-          return;
         }
       }
-      if (brush.type === "NYLON") {
+      if (brush.type === "NYLON" && wipeDelta > 0.8 && wipeDelta < 6.4) {
         if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
           return element;
-        } else {
-          return;
         }
       }
-      if (brush.type === "LIP GLOSS") {
+      if (brush.type === "LIP GLOSS" && wipeDelta > -2 && wipeDelta < 3) {
         if (brushRodDiff > 0 && brushRodDiff < 0.2){
           return element;
-        } else {
-          return;
         }
       }
-      if (brush.type === "DELINEADOR") {
+      if (brush.type === "DELINEADOR" && wipeDelta > -2 && wipeDelta < -1) {
         if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
           return element;
-        } else {
-          return;
         }
       }
     });
 
     return (
-    <div>
-      {filteredRods.map((element) => (
-        <Tile kind="ancestor">
-          <Tile kind="parent">
-            <Tile renderAs="article" kind="child" notification color="light">
-              <Heading size={6} renderAs="p">{element.name}</Heading>
-              <Heading size={7} subtitle renderAs="p">{element.drawing}</Heading>
-              <Heading size={7} subtitle renderAs="p">{element.mold}</Heading>
-              <Button
-                type="submit"
-                color="info"
-                onClick={() => {
-                  addRodClick(element);
-                }}
-              >
-                Add Rod
-              </Button>
+      <div>
+        {filteredRods.map((element) => (
+          <Tile kind="ancestor" className="App">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification color="light">
+                <Heading size={7} renderAs="h6" >{element.name}
+                  <br/>
+                  <br/>
+                  <Tag color="dark"> Drawing </Tag>
+                  <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
+                  <Tag color="dark"> Thread </Tag>
+                  <Tag color="info"> {element.thread}</Tag>
+                  <br/>
+                  <Tag color="dark"> Length </Tag>
+                  <Tag color="info"> {element.dimensions.length}</Tag>
+                  <br/>
+                  <Tag color="dark"> Shaft </Tag>
+                  <Tag color="info"> {element.dimensions.brushDiameter}</Tag>
+                  <br/>
+                  <Tag color="dark"> Rod </Tag>
+                  <Tag color="info"> {element.dimensions.rodDiameter}</Tag>
+                  <br/>
+                  <br/>
+                  <Button
+                    type="submit"
+                    color="info"
+                    size="small"
+                    onClick={() => {
+                      addRodClick(element);
+                    }}
+                  >
+                    Add Rod
+                  </Button>
+                </Heading>
+              </Tile>
             </Tile>
           </Tile>
-        </Tile>
-      ))}
-    </div>
+        ))}
+      </div>
   );
+
   }
 
   return (
@@ -546,13 +679,16 @@ export const RodFilter = (props) => {
                 <br/>
                 <Tag color="dark"> Drawing </Tag>
                 <Tag color="info"> {element.drawing}</Tag>
+                <br/>
                 <Tag color="dark"> Thread </Tag>
                 <Tag color="info"> {element.thread}</Tag>
                 <br/>
                 <Tag color="dark"> Length </Tag>
                 <Tag color="info"> {element.dimensions.length}</Tag>
+                <br/>
                 <Tag color="dark"> Shaft </Tag>
                 <Tag color="info"> {element.dimensions.brushDiameter}</Tag>
+                <br/>
                 <Tag color="dark"> Rod </Tag>
                 <Tag color="info"> {element.dimensions.rodDiameter}</Tag>
                 <br/>
@@ -575,6 +711,7 @@ export const RodFilter = (props) => {
     </div>
 
   );
+
 };
 
 //---------------- Rod filter
@@ -582,24 +719,101 @@ export const RodFilter = (props) => {
 //---------------- Wiper filter
 
 export const WiperFilter = (props) => {
-  const [wipers, setWipers] = useState([]);
+  const bottle = props.bottle;
+  const brush = props.brush;
+  const rod = props.rod;
+  const wiper = props.wiper;
+  const wipers = props.wipers;
+  const setBuildClick = props.setBuildClick;
+  const buildClick = props.buildClick;
+
+  const addWiper = async (data) => {
+    await axios.post("/wiper", {
+        name: data.name,
+        drawing: data.drawing,
+        mold: data.mold,
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          alert("Wiper added to the list!");
+          console.log("Wiper succesfully added");
+        } else {
+          const err = new Error(response.error);
+          console.log(err);
+          throw err;
+        }
+      })
+      .catch(function (error) {
+        alert(error);
+      });
+  };
+
+  const addWiperClick = (element) => {
+    addWiper(element);
+    setBuildClick(!buildClick);
+  };
+
+   if (wiper && wiper.name){
+    const filteredWipers = wipers.filter( element => {
+      return element.name.toLowerCase().indexOf(wiper.name.toLowerCase()) !== -1;
+    });
+
+    return (
+      <div>
+        {filteredWipers.map((element) => (
+          <Tile kind="ancestor" className="App">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification color="light">
+              <Heading size={7} renderAs="h6" >{element.name}
+                <br/>
+                <br/>
+                <Tag color="dark"> Drawing </Tag>
+                <Tag color="info"> {element.drawing}</Tag>
+                <br/>
+                <br/>
+                <Button
+                  type="submit"
+                  color="info"
+                  size="small"
+                  onClick={() => {
+                    addWiperClick(element);
+                  }}
+                >
+                  Add Wiper
+                </Button>
+              </Heading>
+              </Tile>
+            </Tile>
+          </Tile>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div>
       {wipers.map((element) => (
-        <Tile kind="ancestor">
+        <Tile kind="ancestor" className="App">
           <Tile kind="parent">
             <Tile renderAs="article" kind="child" notification color="light">
-              <Heading size={6} renderAs="p">{element.name}</Heading>
-              <Heading size={7} subtitle renderAs="p">{element.drawing}</Heading>
-              <Heading size={7} subtitle renderAs="p">{element.mold}</Heading>
-              <Button
-                type="submit"
-                color="success"
-
-              >
-                Add Wiper
-              </Button>
+              <Heading size={7} renderAs="h6" >{element.name}
+                <br/>
+                <br/>
+                <Tag color="dark"> Drawing </Tag>
+                <Tag color="info"> {element.drawing}</Tag>
+                <br/>
+                <br/>
+                <Button
+                  type="submit"
+                  color="info"
+                  size="small"
+                  onClick={() => {
+                    addWiperClick(element);
+                  }}
+                >
+                  Add Wiper
+                </Button>
+              </Heading>
             </Tile>
           </Tile>
         </Tile>
@@ -620,11 +834,12 @@ const Filter = () => {
   const [rodBrush, setRodBrush] = useState(false);
   const [brushWiper, setBrushWiper] = useState(false);
   const [gap, setGap] = useState(false);
-  const [bottles, setBottles] = useState([]);
   const [bottle, setBottle] = useState([]);
+  const [bottles, setBottles] = useState([]);
   const [rod, setRod] = useState([]);
-  const [wiper, setWiper] = useState([]);
   const [rods, setRods] = useState([]);
+  const [wiper, setWiper] = useState([]);
+  const [wipers, setWipers] = useState([]);
   const [brush, setBrush] = useState([]);
   const [brushes, setBrushes] = useState([]);
   const [build, setBuild] = useState([]);
@@ -656,6 +871,11 @@ const Filter = () => {
       } else {
         setBrush([])
       }
+      if (data[0] && data[0].wiper) {
+        setWiper(data[0].wiper);
+      } else {
+        setWiper([])
+      }
     }
 
     const fetchBottles = async () => {
@@ -682,16 +902,29 @@ const Filter = () => {
       setRods(data);
     }
 
+    const fetchWipers = async () => {
+      const {data} = await axios.get("/wiper")
+      .catch(function (error) {
+        console.log(error)
+      });
+      setWipers(data);
+    }
+
     fetchBuild();
     fetchBottles();
     fetchBrushes();
     fetchRods();
+    fetchWipers();
 
     if (!build[0]) {
       setThread(false);
       setGap(false);
       setBrushWiper(false);
       setRodBrush(false);
+      setWiper([]);
+      setRod([]);
+      setBrush([]);
+      setBottle([]);
     }
 
     //------thread check
@@ -948,8 +1181,8 @@ const Filter = () => {
   return (
     <div>
       <Tile kind="ancestor" className="App">
-        <Tile kind="parent">
-          <Tile renderAs="article" kind="child" notification color="info">
+        <Tile kind="parent" className="space">
+          <Tile renderAs="article" kind="child" notification className="is-white border">
             <Button
               type="submit"
               color="danger"
@@ -958,16 +1191,11 @@ const Filter = () => {
                 removeBottleClick();
               }}
             >
-              delete build
+              Delete build!
             </Button>
           </Tile>
-        </Tile>
-      </Tile>
-
-      <Tile kind="ancestor">
-        <Tile kind="parent" >
-          <Tile renderAs="article" kind="child" notification color="info" >
-            <Tag.Group gapless className="center">
+          <Tile renderAs="article" kind="child" notification className="is-white border">
+            <Tag.Group className="center">
               <Tag color="dark"> Bottle </Tag>
               <Tag color="light"> {bottle.name}</Tag>
               <Tag color="dark"> Brush </Tag>
@@ -984,13 +1212,16 @@ const Filter = () => {
       <Tile kind="ancestor">
         <Tile kind="parent">
           <Tile renderAs="article" kind="child" notification color="white">
-            <BottleFilter thread={thread} rod={rod} bottle={bottle} bottles={bottles} setBuildClick={setBuildClick} buildClick={buildClick}></BottleFilter>
+            <BottleFilter rod={rod} brush={brush} bottle={bottle} bottles={bottles} setBuildClick={setBuildClick} buildClick={buildClick}></BottleFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
             <BrushFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} brushes={brushes}></BrushFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
             <RodFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush}></RodFilter>
+          </Tile>
+          <Tile renderAs="article" kind="child" notification color="white">
+            <WiperFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} wiper={wiper} wipers={wipers}></WiperFilter>
           </Tile>
           {/* <Tile renderAs="article" kind="child" notification>
             <WiperFilter></WiperFilter>

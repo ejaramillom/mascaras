@@ -95,3 +95,16 @@
   margin-right: auto;
   width: 50%;
 }
+
+.space {
+  display: block;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  width: 90%;
+}
+
+.border {
+  border-style: solid;
+  border-color: hsl(0, 0%, 90%);
+  border-width: 0.15rem;
+}
