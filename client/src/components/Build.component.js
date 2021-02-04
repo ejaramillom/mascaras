@@ -176,7 +176,7 @@ const Build = () => {
       }
     }
   //------gap check
-  
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalClick]);
   //-----------------------------------------------------------useEffect end

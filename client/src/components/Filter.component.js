@@ -219,6 +219,7 @@ export const BottleFilter = (props) => {
 export const BrushFilter = (props) => {
   const brush = props.brush;
   const brushes = props.brushes;
+  const claim = props.claim;
   const rod = props.rod;
   const bottle = props.bottle;
   const setBuildClick = props.setBuildClick;
@@ -268,7 +269,7 @@ export const BrushFilter = (props) => {
                 <Heading size={7} renderAs="h6" >{element.brush}
                   <br/>
                   <br/>
-                  <Image rounded="true" key={element.brush} size="3by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
+                  <Image rounded="true" key={element.brush} size="2by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
@@ -303,6 +304,67 @@ export const BrushFilter = (props) => {
         ))}
       </div>
     );
+
+  } else if (claim){
+    const filteredBrushes = brushes.filter( element => {
+      if (claim == "definition" && element.claim.definition == true) {
+        return element;
+      } else if (claim == "volumizing" && element.claim.volumizing == true)  {
+        return element;
+      } else if (claim == "lengthening" && element.claim.lengthening == true) {
+        return element;
+      } else if (claim == "curling" && element.claim.curling == true) {
+        return element;
+      } else if (claim == "plumping" && element.claim.plumping == true) {
+        return element;
+      }
+    });
+
+    return (
+      <div>
+        {filteredBrushes.map((element) => (
+          <Tile kind="ancestor" className="App">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification color="light">
+                <Heading size={7} renderAs="h6" >{element.brush}
+                  <br/>
+                  <br/>
+                  <Image rounded="true" key={element.brush} size="2by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
+                  <br/>
+                  <Tag color="dark"> Drawing </Tag>
+                  <Tag color="info"> {element.drawing}</Tag>
+                  <br/>
+                  <Tag color="dark"> Type </Tag>
+                  <Tag color="info"> {element.type}</Tag>
+                  <br/>
+                  <Tag color="dark"> Length </Tag>
+                  <Tag color="info"> {element.brushLength}</Tag>
+                  <br/>
+                  <Tag color="dark"> Shaft </Tag>
+                  <Tag color="info"> {element.shaftDiameter}</Tag>
+                  <br/>
+                  <Tag color="dark"> Brush </Tag>
+                  <Tag color="info"> {element.brushDiameter}</Tag>
+                  <br/>
+                  <br/>
+                  <Button
+                    type="submit"
+                    color="info"
+                    size="small"
+                    onClick={() => {
+                      addBrushClick(element);
+                    }}
+                  >
+                    Add Brush
+                  </Button>
+                </Heading>
+              </Tile>
+            </Tile>
+          </Tile>
+        ))}
+      </div>
+    );
+
   } else if (rod && rod.name && bottle && bottle.name){
     const filteredBrushes = brushes.filter( element => {
       let mascaraGap =  (Number(bottle.depth) - (Number(element.brushLength) + Number(rod.dimensions.length)));
@@ -322,7 +384,7 @@ export const BrushFilter = (props) => {
                 <Heading size={7} renderAs="h6" >{element.brush}
                   <br/>
                   <br/>
-                  <Image rounded="true" key={element.brush} size="3by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
+                  <Image rounded="true" key={element.brush} size="2by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
                   <br/>
                   <Tag color="dark"> Drawing </Tag>
                   <Tag color="info"> {element.drawing}</Tag>
@@ -357,6 +419,7 @@ export const BrushFilter = (props) => {
         ))}
       </div>
     );
+
   }
 
   return (
@@ -368,7 +431,7 @@ export const BrushFilter = (props) => {
               <Heading size={7} renderAs="h6" >{element.brush}
                 <br/>
                 <br/>
-                <Image rounded="true" key={element.brush} size="3by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
+                <Image rounded="true" key={element.brush} size="2by1" className="center" src={require(`../images/${element.brush}.jpg`)} alt="" />
                 <br/>
                 <Tag color="dark"> Drawing </Tag>
                 <Tag color="info"> {element.drawing}</Tag>
@@ -842,6 +905,7 @@ const Filter = () => {
   const [wipers, setWipers] = useState([]);
   const [brush, setBrush] = useState([]);
   const [brushes, setBrushes] = useState([]);
+  const [claim, setClaim] = useState("");
   const [build, setBuild] = useState([]);
   const [buildClick, setBuildClick] = useState(false);
 
@@ -1066,110 +1130,6 @@ const Filter = () => {
     });
   };
 
-  const verifyThread = () => {
-    if (build[0] && bottle.name && rod.name) {
-      if (bottle.thread === rod.thread) {
-        setThread(true);
-      } else {
-        alert("Threads are different")
-        setThread(false);
-      }
-    } else {
-      alert("There is missing data on the mascara")
-    }
-  };
-
-  const verifyRodBrush = () => {
-    if (build[0] && brush.type && rod.name) {
-      let brushRodDiff =  Number(rod.dimensions.brushDiameter) - Number(brush.shaftDiameter);
-      if (brush.type === "INYECTADO") {
-        if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
-          setRodBrush(true);
-        } else {
-          alert("Difference is lower than 0.05mm or bigger than 0.15mm")
-        }
-      }
-      if (brush.type === "NYLON") {
-        if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
-          setRodBrush(true);
-        } else {
-          alert("Difference is lower than -0.05mm or bigger than 0.1mm")
-        }
-      }
-      if (brush.type === "LIP GLOSS") {
-        if (brushRodDiff > 0 && brushRodDiff < 0.2){
-          setRodBrush(true);
-        } else {
-          alert("Difference is lower than 0mm or bigger than 0.2mm")
-        }
-      }
-      if (brush.type === "DELINEADOR") {
-        if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
-          setRodBrush(true);
-        } else {
-          alert("Difference is lower than -0.05mm or bigger than 0.1mm")
-        }
-      }
-    } else {
-      alert("There is missing data on the mascara")
-    }
-  };
-
-  const verifyBrushWiper = () => {
-    if (build[0] && brush.type && rod.name) {
-      let brushWiperDiff =  Number(brush.brushDiameter) - Number(rod.dimensions.rodDiameter) ;
-      if (brush.type === "INYECTADO") {
-        if (brushWiperDiff > 0.5 && brushWiperDiff < 4.8){
-          setBrushWiper(true);
-        } else {
-          alert("Difference is lower than 0.5mm or bigger than 4.8mm")
-        }
-      }
-      if (brush.type === "NYLON") {
-        if (brushWiperDiff > 0.8 && brushWiperDiff < 6.4){
-          setBrushWiper(true);
-        } else {
-          alert("Difference is lower than 0.8mm or bigger than 6.4mm")
-        }
-      }
-      if (brush.type === "LIP GLOSS") {
-        if (brushWiperDiff > -3 && brushWiperDiff < 2){
-          setBrushWiper(true);
-        } else {
-          alert("Difference is lower than -3mm or bigger than 2mm")
-        }
-      }
-      if (brush.type === "DELINEADOR") {
-        if (brushWiperDiff > 1 && brushWiperDiff < 2){
-          setBrushWiper(true);
-        } else {
-          alert("Difference is lower than 1mm or bigger than 2mm")
-        }
-      }
-    } else {
-      alert("There is missing build on the mascara")
-    }
-  };
-
-  const verifyGap = () => {
-    if (build[0] && bottle.name && rod.name) {
-      if (bottle.thread === rod.thread) {
-        setGap(true);
-      } else {
-        setGap(false);
-      }
-    } else {
-      alert("There is missing data on the mascara")
-    }
-  };
-
-  const reset = () => {
-    setThread(false);
-    setGap(false);
-    setBrushWiper(false);
-    setRodBrush(false);
-  };
-
   const removeBottleClick = () => {
     deleteBuild([]);
     setBuildClick(!buildClick);
@@ -1182,10 +1142,79 @@ const Filter = () => {
     <div>
       <Tile kind="ancestor" className="App">
         <Tile kind="parent" className="space">
+          <Tile renderAs="article" kind="child" notification className="is-white border verticalPad">
+          <Button.Group size="small">
+            <Button
+              type="submit"
+              className="is-danger is-light"
+              size="small"
+              onClick={() => {
+                setClaim("");
+              }}
+            >
+              No claim
+            </Button>
+            <Button
+              type="submit"
+              className="is-link"
+              size="small"
+              onClick={() => {
+                setClaim("definition");
+              }}
+            >
+              Definition
+            </Button>
+            <Button
+              type="submit"
+              className="is-link"
+              size="small"
+              onClick={() => {
+                setClaim("volumizing");
+              }}
+            >
+              Volumizing
+            </Button>
+            <Button
+              type="submit"
+              className="is-link"
+              size="small"
+              onClick={() => {
+                setClaim("lengthening");
+              }}
+            >
+              Lengthening
+            </Button>
+            <Button
+              type="submit"
+              className="is-link"
+              size="small"
+              onClick={() => {
+                setClaim("plumping");
+              }}
+            >
+              Plumping
+            </Button>
+            <Button
+              type="submit"
+              className="is-link"
+              size="small"
+              onClick={() => {
+                setClaim("curling");
+              }}
+            >
+              Curling
+            </Button>
+          </Button.Group>
+            {claim ?
+              <div>
+                <Tag color="dark"> { claim } </Tag>
+              </div>
+              : "" }
+          </Tile>
           <Tile renderAs="article" kind="child" notification className="is-white border">
             <Button
               type="submit"
-              color="danger"
+              className="is-danger is-light"
               size="small"
               onClick={() => {
                 removeBottleClick();
@@ -1193,8 +1222,8 @@ const Filter = () => {
             >
               Delete build!
             </Button>
-          </Tile>
-          <Tile renderAs="article" kind="child" notification className="is-white border">
+            <br/>
+            <br/>
             <Tag.Group className="center">
               <Tag color="dark"> Bottle </Tag>
               <Tag color="light"> {bottle.name}</Tag>
@@ -1210,12 +1239,12 @@ const Filter = () => {
       </Tile>
 
       <Tile kind="ancestor">
-        <Tile kind="parent">
+        <Tile kind="parent" className="App">
           <Tile renderAs="article" kind="child" notification color="white">
             <BottleFilter rod={rod} brush={brush} bottle={bottle} bottles={bottles} setBuildClick={setBuildClick} buildClick={buildClick}></BottleFilter>
           </Tile>
-          <Tile renderAs="article" kind="child" notification color="white">
-            <BrushFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} brushes={brushes}></BrushFilter>
+          <Tile renderAs="article" kind="child" notification color="white" className="center">
+            <BrushFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} brushes={brushes} claim={claim}></BrushFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
             <RodFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush}></RodFilter>
