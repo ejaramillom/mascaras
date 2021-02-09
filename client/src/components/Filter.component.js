@@ -4,6 +4,7 @@ import Tile from 'react-bulma-components/lib/components/tile';
 import Heading from 'react-bulma-components/lib/components/heading';
 import Image from 'react-bulma-components/lib/components/image';
 import Tag from 'react-bulma-components/lib/components/tag';
+import ExportCSV from './ExportCSV.component';
 import axios from "axios";
 import '../App.css';
 
@@ -52,6 +53,9 @@ export const BottleFilter = (props) => {
 
     return (
       <div>
+        <ExportCSV csvData={filteredBottles} fileName="bottles" />
+        <br />
+        <br />
         {filteredBottles.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -98,6 +102,9 @@ export const BottleFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredBottles} fileName="bottles" />
+      <br />
+      <br />
         {filteredBottles.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -140,6 +147,9 @@ export const BottleFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredBottles} fileName="bottles" />
+      <br />
+      <br />
         {filteredBottles.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -178,6 +188,9 @@ export const BottleFilter = (props) => {
 
   return (
     <div>
+    <ExportCSV csvData={bottles} fileName="bottles" />
+    <br />
+    <br />
       {bottles.map((element) => (
         <Tile kind="ancestor" className="App">
           <Tile kind="parent">
@@ -264,6 +277,9 @@ export const BrushFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredBrushes} fileName="brushes" />
+      <br />
+      <br />
         {filteredBrushes.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -326,6 +342,9 @@ export const BrushFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredBrushes} fileName="brushes" />
+      <br />
+      <br />
         {filteredBrushes.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -381,6 +400,9 @@ export const BrushFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredBrushes} fileName="brushes" />
+      <br />
+      <br />
         {filteredBrushes.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -428,6 +450,9 @@ export const BrushFilter = (props) => {
 
   return (
     <div>
+    <ExportCSV csvData={brushes} fileName="brushes" />
+    <br />
+    <br />
       {brushes.map((element) => (
         <Tile kind="ancestor" className="App">
           <Tile kind="parent">
@@ -522,6 +547,9 @@ export const RodFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredRods} fileName="rods" />
+      <br />
+      <br />
         {filteredRods.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -575,6 +603,9 @@ export const RodFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredRods} fileName="rods" />
+      <br />
+      <br />
         {filteredRods.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -627,6 +658,9 @@ export const RodFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredRods} fileName="rods" />
+      <br />
+      <br />
         {filteredRods.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -704,6 +738,9 @@ export const RodFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredRods} fileName="rods" />
+      <br />
+      <br />
         {filteredRods.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -749,6 +786,9 @@ export const RodFilter = (props) => {
 
   return (
     <div>
+    <ExportCSV csvData={rods} fileName="rods" />
+    <br />
+    <br />
       {rods.map((element) => (
         <Tile kind="ancestor" className="App">
           <Tile kind="parent">
@@ -836,6 +876,9 @@ export const WiperFilter = (props) => {
 
     return (
       <div>
+      <ExportCSV csvData={filteredWipers} fileName="wipers" />
+      <br />
+      <br />
         {filteredWipers.map((element) => (
           <Tile kind="ancestor" className="App">
             <Tile kind="parent">
@@ -868,6 +911,9 @@ export const WiperFilter = (props) => {
 
   return (
     <div>
+    <ExportCSV csvData={wipers} fileName="wipers" />
+    <br />
+    <br />
       {wipers.map((element) => (
         <Tile kind="ancestor" className="App">
           <Tile kind="parent">
@@ -1107,6 +1153,7 @@ const Filter = () => {
               : "" }
           </Tile>
           <Tile renderAs="article" kind="child" notification className="is-white border">
+            <ExportCSV csvData={build} fileName="build"/>
             <Button
               type="submit"
               className="is-danger is-light"
