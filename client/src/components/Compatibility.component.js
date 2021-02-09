@@ -11,7 +11,7 @@ export const ThreadCompatible = (props) => {
         <Container>
           <p className="bd-notification is-success">
             <Heading size={5} renderAs="p">Thread</Heading>
-            <Heading subtitle renderAs="p">The thread in the rod and the bottle are compatible</Heading>
+            <Heading subtitle size={6} renderAs="p">The thread in the rod and the bottle are compatible</Heading>
           </p>
         </Container>
       </Section>
@@ -25,7 +25,7 @@ export const ThreadIncompatible = (props) => {
         <Container>
           <p className="bd-notification is-warning">
             <Heading size={5} renderAs="p">Thread incompatible</Heading>
-            <Heading subtitle renderAs="p">The thread in the rod and the bottle won't work</Heading>
+            <Heading subtitle size={6} renderAs="p">The thread in the rod and the bottle won't work</Heading>
           </p>
         </Container>
       </Section>
@@ -40,7 +40,7 @@ export const BrushWiperCompatible = (props) => {
         <Container>
           <p className="bd-notification is-success">
             <Heading size={5} renderAs="p">Brush - wiper</Heading>
-            <Heading subtitle renderAs="p">The brush fits inside the hole of the wiper</Heading>
+            <Heading subtitle size={6} renderAs="p">The brush fits inside the hole of the wiper</Heading>
           </p>
         </Container>
       </Section>
@@ -54,7 +54,7 @@ export const BrushWiperIncompatible = (props) => {
         <Container>
           <p className="bd-notification is-warning">
             <Heading size={5} renderAs="p">Brush - wiper</Heading>
-            <Heading subtitle renderAs="p">The brush won't work with the hole of the wiper</Heading>
+            <Heading subtitle size={6} renderAs="p">The brush won't work with the hole of the wiper</Heading>
           </p>
         </Container>
       </Section>
@@ -69,7 +69,7 @@ export const BrushRodCompatible = (props) => {
         <Container>
           <p className="bd-notification is-success">
             <Heading size={5} renderAs="p">Rod - Brush</Heading>
-            <Heading subtitle renderAs="p">The brush fits inside the hole of the rod</Heading>
+            <Heading subtitle size={6} renderAs="p">The brush fits inside the hole of the rod</Heading>
           </p>
         </Container>
       </Section>
@@ -83,7 +83,7 @@ export const BrushRodIncompatible = (props) => {
         <Container>
           <p className="bd-notification is-warning">
             <Heading size={5} renderAs="p">Rod and brush incompatibles</Heading>
-            <Heading subtitle renderAs="p">The brush does not fit in the rod</Heading>
+            <Heading subtitle size={6} renderAs="p">The brush does not fit in the rod</Heading>
           </p>
         </Container>
       </Section>
@@ -98,7 +98,7 @@ export const GapCompatible = (props) => {
         <Container>
           <p className="bd-notification is-success">
             <Heading size={5} renderAs="p">Gap</Heading>
-            <Heading subtitle renderAs="p">The gap of the assembly is between 1 and 5</Heading>
+            <Heading subtitle size={6} renderAs="p">The gap of the assembly is between 1 and 5</Heading>
           </p>
         </Container>
       </Section>
@@ -112,7 +112,7 @@ export const GapIncompatible = (props) => {
         <Container>
           <p className="bd-notification is-warning">
             <Heading size={5} renderAs="p">Incompatible Gap</Heading>
-            <Heading subtitle renderAs="p">The brush and the rod crashes with the bottle</Heading>
+            <Heading subtitle size={6} renderAs="p">The brush and the rod crashes with the bottle</Heading>
           </p>
         </Container>
       </Section>

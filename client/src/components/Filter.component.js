@@ -91,6 +91,8 @@ export const BottleFilter = (props) => {
       let gap = (Number(element.depth) - (Number(rod.dimensions.length) + Number(brush.brushLength)) );
       if (gap > 2 && gap < 6 && (element.thread.toLowerCase().indexOf(rod.thread.toLowerCase()) !== -1) ){
         return element;
+      } else {
+        return "";
       }
     });
 
@@ -307,16 +309,18 @@ export const BrushFilter = (props) => {
 
   } else if (claim){
     const filteredBrushes = brushes.filter( element => {
-      if (claim == "definition" && element.claim.definition == true) {
+      if (claim === "definition" && element.claim.definition === true) {
         return element;
-      } else if (claim == "volumizing" && element.claim.volumizing == true)  {
+      } else if (claim === "volumizing" && element.claim.volumizing === true)  {
         return element;
-      } else if (claim == "lengthening" && element.claim.lengthening == true) {
+      } else if (claim === "lengthening" && element.claim.lengthening === true) {
         return element;
-      } else if (claim == "curling" && element.claim.curling == true) {
+      } else if (claim === "curling" && element.claim.curling === true) {
         return element;
-      } else if (claim == "plumping" && element.claim.plumping == true) {
+      } else if (claim === "plumping" && element.claim.plumping === true) {
         return element;
+      } else {
+        return "";
       }
     });
 
@@ -564,6 +568,8 @@ export const RodFilter = (props) => {
       let depthDiff = (Number(bottle.depth) - Number(element.dimensions.length));
       if (element.thread && (depthDiff > 0)) {
         return element.thread.toLowerCase().indexOf(bottle.thread.toLowerCase()) !== -1;
+      } else {
+        return "";
       }
     });
 
@@ -614,6 +620,8 @@ export const RodFilter = (props) => {
     const filteredRods = rods.filter( element => {
       if (element.thread) {
         return element.thread.toLowerCase().indexOf(bottle.thread.toLowerCase()) !== -1;
+      } else {
+        return "";
       }
     });
 
@@ -667,21 +675,29 @@ export const RodFilter = (props) => {
       if (brush.type === "INYECTADO" && wipeDelta > 0.5 && wipeDelta < 4.8) {
         if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
           return element;
+        } else {
+          return "";
         }
       }
       if (brush.type === "NYLON" && wipeDelta > 0.8 && wipeDelta < 6.4) {
         if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
           return element;
+        } else {
+          return "";
         }
       }
       if (brush.type === "LIP GLOSS" && wipeDelta > -2 && wipeDelta < 3) {
         if (brushRodDiff > 0 && brushRodDiff < 0.2){
           return element;
+        } else {
+          return "";
         }
       }
       if (brush.type === "DELINEADOR" && wipeDelta > -2 && wipeDelta < -1) {
         if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
           return element;
+        } else {
+          return "";
         }
       }
     });
@@ -782,9 +798,6 @@ export const RodFilter = (props) => {
 //---------------- Wiper filter
 
 export const WiperFilter = (props) => {
-  const bottle = props.bottle;
-  const brush = props.brush;
-  const rod = props.rod;
   const wiper = props.wiper;
   const wipers = props.wipers;
   const setBuildClick = props.setBuildClick;
@@ -893,10 +906,6 @@ const Filter = () => {
 
 //---------------- hooks
 
-  const [thread, setThread] = useState(false);
-  const [rodBrush, setRodBrush] = useState(false);
-  const [brushWiper, setBrushWiper] = useState(false);
-  const [gap, setGap] = useState(false);
   const [bottle, setBottle] = useState([]);
   const [bottles, setBottles] = useState([]);
   const [rod, setRod] = useState([]);
@@ -981,128 +990,14 @@ const Filter = () => {
     fetchWipers();
 
     if (!build[0]) {
-      setThread(false);
-      setGap(false);
-      setBrushWiper(false);
-      setRodBrush(false);
       setWiper([]);
       setRod([]);
       setBrush([]);
       setBottle([]);
     }
 
-    //------thread check
-    if (build[0] && bottle && rod) {
-      if (bottle.thread === rod.thread) {
-        setThread(true);
-      }
-    } else {
-      setThread(false);
-    }
-    //------thread check
-
-    //------rod and brush check
-    if (build[0] && brush.type && rod.name) {
-      let brushRodDiff =  Number(rod.dimensions.brushDiameter) - Number(brush.shaftDiameter);
-      if (brush.type === "INYECTADO") {
-        if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
-          setRodBrush(true);
-        } else {
-          setRodBrush(false);
-        }
-      }
-      if (brush.type === "NYLON") {
-        if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
-          setRodBrush(true);
-        } else {
-          setRodBrush(false);
-        }
-      }
-      if (brush.type === "LIP GLOSS") {
-        if (brushRodDiff > 0 && brushRodDiff < 0.2){
-          setRodBrush(true);
-        } else {
-          setRodBrush(false);
-        }
-      }
-      if (brush.type === "DELINEADOR") {
-        if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
-          setRodBrush(true);
-        } else {
-          setRodBrush(false);
-        }
-      }
-    }
-    //------rod and brush check
-
-    //------wiper and brush check
-    if (build[0] && brush.type && rod.name) {
-      let brushWiperDiff =  Number(brush.brushDiameter) - Number(rod.dimensions.rodDiameter) ;
-      if (brush.type === "INYECTADO") {
-        if (brushWiperDiff > 0.5 && brushWiperDiff < 4.8){
-          setBrushWiper(true);
-        } else {
-          setBrushWiper(false);
-        }
-      }
-      if (brush.type === "NYLON") {
-        if (brushWiperDiff > 0.8 && brushWiperDiff < 6.4){
-          setBrushWiper(true);
-        } else {
-          setBrushWiper(false);
-        }
-      }
-      if (brush.type === "LIP GLOSS") {
-        if (brushWiperDiff > -3 && brushWiperDiff < 2){
-          setBrushWiper(true);
-        } else {
-          setBrushWiper(false);
-        }
-      }
-      if (brush.type === "DELINEADOR") {
-        if (brushWiperDiff > 1 && brushWiperDiff < 2){
-          setBrushWiper(true);
-        } else {
-          setBrushWiper(false);
-        }
-      }
-    }
-    //------wiper and brush check
-
-    //------gap check
-    if (build[0] && brush.type && rod.name && bottle.name) {
-      let mascaraGap =  Number(bottle.depth) - (Number(brush.brushLength) + Number(rod.dimensions.length));
-      if (brush.type === "INYECTADO") {
-        if (mascaraGap > 2 && mascaraGap < 6){
-          setGap(true);
-        } else {
-          setGap(false);
-        }
-      }
-      if (brush.type === "NYLON") {
-        if (mascaraGap > 1 && mascaraGap < 5){
-          setGap(true);
-        } else {
-          setGap(false);
-        }
-      }
-      if (brush.type === "LIP GLOSS") {
-        if (mascaraGap > 1 && mascaraGap < 6){
-          setGap(true);
-        } else {
-          setGap(false);
-        }
-      }
-      if (brush.type === "DELINEADOR") {
-        if (mascaraGap > 1 && mascaraGap < 5){
-          setGap(true);
-        } else {
-          setGap(false);
-        }
-      }
-    }
-    //------gap check
-
+// no borrar esta linea
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [buildClick]);
 
 //---------------- useEffect
@@ -1114,10 +1009,10 @@ const Filter = () => {
     .then(function (response) {
       if (response.status === 200) {
         console.log("Succesfully deleted");
-        setThread(false);
-        setGap(false);
-        setBrushWiper(false);
-        setRodBrush(false);
+        setBottle([]);
+        setRod([]);
+        setWiper([]);
+        setBrush([]);
         alert("Build deleted!");
       } else {
         const err = new Error(response.error);
@@ -1130,7 +1025,7 @@ const Filter = () => {
     });
   };
 
-  const removeBottleClick = () => {
+  const removeBuildClick = () => {
     deleteBuild([]);
     setBuildClick(!buildClick);
   };
@@ -1217,7 +1112,7 @@ const Filter = () => {
               className="is-danger is-light"
               size="small"
               onClick={() => {
-                removeBottleClick();
+                removeBuildClick();
               }}
             >
               Delete build!

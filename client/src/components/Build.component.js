@@ -310,29 +310,34 @@ const Build = () => {
 
   //------rendering of the component
   return (
-    <div className="App">
-      <Tile kind="ancestor">
-        <Tile kind="parent">
-          <Tile renderAs="article" kind="child" notification >
-            <ThreadCompatibility thread={thread}>
-            </ThreadCompatibility>
+    <div>
+      <Section className="App App-header">
+        <Container>
+          <Tile kind="ancestor">
+            <Tile kind="parent">
+              <Tile renderAs="article" kind="child" notification className="App-back">
+                <ThreadCompatibility thread={thread}>
+                </ThreadCompatibility>
+              </Tile>
+              <Tile renderAs="article" kind="child" notification className="App-back">
+                <BrushRodCompatibility rodBrush={rodBrush}>
+                </BrushRodCompatibility>
+              </Tile>
+              <Tile renderAs="article" kind="child" notification className="App-back">
+                <BrushWiperCompatibility brushWiper={brushWiper}>
+                </BrushWiperCompatibility>
+              </Tile>
+              <Tile renderAs="article" kind="child" notification className="App-back">
+                <GapCompatibility gap={gap}>
+                </GapCompatibility>
+              </Tile>
+            </Tile>
           </Tile>
-          <Tile renderAs="article" kind="child" notification >
-            <BrushRodCompatibility rodBrush={rodBrush}>
-            </BrushRodCompatibility>
-          </Tile>
-          <Tile renderAs="article" kind="child" notification >
-            <BrushWiperCompatibility brushWiper={brushWiper}>
-            </BrushWiperCompatibility>
-          </Tile>
-          <Tile renderAs="article" kind="child" notification >
-            <GapCompatibility gap={gap}>
-            </GapCompatibility>
-          </Tile>
-        </Tile>
-      </Tile>
+        </Container>
 
       {/* verifying assembly tiles*/}
+
+      <Container>
       {/* mascara*/}
 
       <MascaraBuild>
@@ -366,8 +371,7 @@ const Build = () => {
       {/* Delete and reset*/}
       {/* check buttons - will be invisibilised*/}
 
-      <Section>
-        <Container>
+
           <Button.Group
             position="centered"
             size="medium"

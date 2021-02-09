@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Modal from "react-bulma-components/lib/components/modal";
 import Button from "react-bulma-components/lib/components/button";
 import Section from "react-bulma-components/lib/components/section";
+import Tag from 'react-bulma-components/lib/components/tag';
 import axios from "axios";
 import {
   getWipers,
@@ -35,7 +36,7 @@ export class OpenModal extends React.Component {
   render() {
     return (
       <div>
-        <Button color="dark" onClick={this.open}>
+        <Button className="is-link is-light" onClick={this.open}>
           {" "}
           {this.props.name}{" "}
         </Button>
@@ -103,14 +104,21 @@ export const BottleModal = (props) => {
       <div>
         <OpenModal modal={{ closeOnBlur: false }} name="Bottle">
           <div className="modal-body">
-            {filteredBottles.map((element) => (
-              <Modal.Content>
+            <Modal.Content className="App">
+              {filteredBottles.map((element) => (
                 <Section style={{ backgroundColor: "white" }}>
-                  <p>
-                    <strong>{element.name}</strong>
-                    <small>{element.drawing}</small> <small>{element.mold}</small>
-                    <br />
-                  </p>
+                <p>
+                  <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{element.name}</strong>
+                  <br />
+                  <Tag className="is-info is-light">Drawing</Tag>
+                  <small className="horizontalPad">{element.drawing}</small>
+                  <Tag className="is-info is-light">Thread</Tag>
+                  <small className="horizontalPad">{element.thread}</small>
+                  <Tag className="is-info is-light">Depth</Tag>
+                  <small className="horizontalPad">{element.depth}</small>
+                  <br />
+                </p>
                   <Button
                     type="submit"
                     color="info"
@@ -121,8 +129,8 @@ export const BottleModal = (props) => {
                     Add Bottle
                   </Button>
                 </Section>
-              </Modal.Content>
-            ))}
+              ))}
+            </Modal.Content>
           </div>
         </OpenModal>
       </div>
@@ -133,14 +141,22 @@ export const BottleModal = (props) => {
     <div>
       <OpenModal modal={{ closeOnBlur: false }} name="Bottle">
         <div className="modal-body">
-          {bottles.map((element) => (
-            <Modal.Content>
+          <Modal.Content className="App">
+            {bottles.map((element) => (
               <Section style={{ backgroundColor: "white" }}>
                 <p>
-                  <strong>{element.name}</strong>
-                  <small>{element.drawing}</small> <small>{element.mold}</small>
+                  <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{element.name}</strong>
+                  <br />
+                  <Tag className="is-info is-light">Drawing</Tag>
+                  <small className="horizontalPad">{element.drawing}</small>
+                  <Tag className="is-info is-light">Thread</Tag>
+                  <small className="horizontalPad">{element.thread}</small>
+                  <Tag className="is-info is-light">Depth</Tag>
+                  <small className="horizontalPad">{element.depth}</small>
                   <br />
                 </p>
+                <br />
                 <Button
                   type="submit"
                   color="info"
@@ -151,8 +167,8 @@ export const BottleModal = (props) => {
                   Add Bottle
                 </Button>
               </Section>
-            </Modal.Content>
-          ))}
+            ))}
+          </Modal.Content>
         </div>
       </OpenModal>
     </div>
@@ -210,7 +226,7 @@ export const BrushModal = (props) => {
       if (mascaraGap > 1 && mascaraGap < 6) {
         return element;
       } else {
-        return null ;
+        return "" ;
       }
       // .shaftDiameter.toLowerCase().indexOf(rod.dimensions.brushDiameter.toLowerCase()) !== -1
     });
@@ -219,14 +235,27 @@ export const BrushModal = (props) => {
       <div>
         <OpenModal modal={{ closeOnBlur: false }} name="Brush">
           <div className="modal-body">
+          <Modal.Content className="App">
             {filteredBrushes.map((element) => (
-              <Modal.Content>
               <Section style={{ backgroundColor: "white" }}>
                 <p>
-                  <strong>{element.brush}</strong>
-                  <small>{element.drawing}</small> <small>{element.type}</small>
+                  <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{element.brush}</strong>
+                  <br />
+                  <Tag className="is-info is-light">Drawing</Tag>
+                  <small className="horizontalPad">{element.drawing}</small>
+                  <Tag className="is-info is-light">Type</Tag>
+                  <small className="horizontalPad">{element.type}</small>
+                  <Tag className="is-info is-light">Brush length</Tag>
+                  <small className="horizontalPad">{element.brushLength}</small>
+                    <br />
+                  <Tag className="is-info is-light">Shaft diameter</Tag>
+                  <small className="horizontalPad">{element.shaftDiameter}</small>
+                  <Tag className="is-info is-light">brush diameter</Tag>
+                  <small className="horizontalPad">{element.brushDiameter}</small>
                   <br />
                 </p>
+                  <br />
                 <Button
                   type="submit"
                   color="info"
@@ -237,8 +266,8 @@ export const BrushModal = (props) => {
                   Add Brush
                 </Button>
               </Section>
-              </Modal.Content>
             ))}
+            </Modal.Content>
           </div>
         </OpenModal>
       </div>
@@ -249,7 +278,7 @@ export const BrushModal = (props) => {
       if (mascaraGap > 1 && mascaraGap < 6) {
         return element;
       } else {
-        return null;
+        return "";
       }
     });
 
@@ -257,14 +286,27 @@ export const BrushModal = (props) => {
       <div>
         <OpenModal modal={{ closeOnBlur: false }} name="Brush">
           <div className="modal-body">
+          <Modal.Content className="App">
             {filteredBrushes.map((element) => (
-              <Modal.Content>
               <Section style={{ backgroundColor: "white" }}>
-                <p>
-                  <strong>{element.brush}</strong>
-                  <small>{element.drawing}</small> <small>{element.type}</small>
+              <p>
+                <Tag color="info">Name</Tag>
+                <strong className="horizontalPad">{element.brush}</strong>
+                <br />
+                <Tag className="is-info is-light">Drawing</Tag>
+                <small className="horizontalPad">{element.drawing}</small>
+                <Tag className="is-info is-light">Type</Tag>
+                <small className="horizontalPad">{element.type}</small>
+                <Tag className="is-info is-light">Brush length</Tag>
+                <small className="horizontalPad">{element.brushLength}</small>
                   <br />
-                </p>
+                <Tag className="is-info is-light">Shaft diameter</Tag>
+                <small className="horizontalPad">{element.shaftDiameter}</small>
+                <Tag className="is-info is-light">brush diameter</Tag>
+                <small className="horizontalPad">{element.brushDiameter}</small>
+                <br />
+              </p>
+                <br />
                 <Button
                   type="submit"
                   color="info"
@@ -275,8 +317,8 @@ export const BrushModal = (props) => {
                   Add Brush
                 </Button>
               </Section>
-              </Modal.Content>
             ))}
+            </Modal.Content>
           </div>
         </OpenModal>
       </div>
@@ -287,26 +329,39 @@ export const BrushModal = (props) => {
     <div>
       <OpenModal modal={{ closeOnBlur: false }} name="Brush">
         <div className="modal-body">
-          {brushes.map((element) => (
-            <Modal.Content>
-            <Section style={{ backgroundColor: "white" }}>
-              <p>
-                <strong>{element.brush}</strong>
-                <small>{element.drawing}</small> <small>{element.type}</small>
+          <Modal.Content className="App">
+            {brushes.map((element) => (
+              <Section style={{ backgroundColor: "white" }}>
+                <p>
+                  <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{element.brush}</strong>
+                  <br />
+                  <Tag className="is-info is-light">Drawing</Tag>
+                  <small className="horizontalPad">{element.drawing}</small>
+                  <Tag className="is-info is-light">Type</Tag>
+                  <small className="horizontalPad">{element.type}</small>
+                  <Tag className="is-info is-light">Brush length</Tag>
+                  <small className="horizontalPad">{element.brushLength}</small>
+                    <br />
+                  <Tag className="is-info is-light">Shaft diameter</Tag>
+                  <small className="horizontalPad">{element.shaftDiameter}</small>
+                  <Tag className="is-info is-light">brush diameter</Tag>
+                  <small className="horizontalPad">{element.brushDiameter}</small>
+                  <br />
+                </p>
                 <br />
-              </p>
-              <Button
-                type="submit"
-                color="info"
-                onClick={() => {
-                  addBrush(element);
-                }}
-              >
-                Add Brush
-              </Button>
-            </Section>
-            </Modal.Content>
-          ))}
+                <Button
+                  type="submit"
+                  color="info"
+                  onClick={() => {
+                    addBrush(element);
+                  }}
+                >
+                  Add Brush
+                </Button>
+              </Section>
+            ))}
+          </Modal.Content>
         </div>
       </OpenModal>
     </div>
@@ -365,66 +420,92 @@ export const RodModal = (props) => {
       if (element.thread) {
         return element.thread.toLowerCase().indexOf(bottle.thread.toLowerCase()) !== -1;
       } else {
-        return element;
+        return "";
       }
     });
 
     return (
       <div>
-      <OpenModal modal={{ closeOnBlur: false }} name="Rod">
-        <div className="modal-body">
-          {filteredRods.map((element) => (
-            <Modal.Content>
-            <Section style={{ backgroundColor: "white" }}>
-              <p>
-                <strong>{element.name}</strong>
-                <small>{element.thread}</small> <small>{element.drawing}</small>
-                <br />
-              </p>
-              <Button
-                type="submit"
-                color="info"
-                onClick={() => {
-                  addRod(element);
-                }}
-              >
-                Add Rod
-              </Button>
-            </Section>
+        <OpenModal modal={{ closeOnBlur: false }} name="Rod">
+          <div className="modal-body">
+            <Modal.Content className="App">
+              {filteredRods.map((element) => (
+                <Section style={{ backgroundColor: "white" }}>
+                  <p>
+                    <Tag color="info">Name</Tag>
+                    <strong className="horizontalPad">{element.name}</strong>
+                    <br />
+                    <Tag className="is-info is-light">Drawing</Tag>
+                    <small className="horizontalPad">{element.drawing}</small>
+                    <Tag className="is-info is-light">Thread</Tag>
+                    <small className="horizontalPad">{element.thread}</small>
+                    <Tag className="is-info is-light">Rod length</Tag>
+                    <small className="horizontalPad">{element.dimensions.length}</small>
+                      <br />
+                    <Tag className="is-info is-light">Shaft diameter</Tag>
+                    <small className="horizontalPad">{element.dimensions.brushDiameter}</small>
+                    <Tag className="is-info is-light">Rod diameter</Tag>
+                    <small className="horizontalPad">{element.dimensions.rodDiameter}</small>
+                    <br />
+                  </p>
+                    <br />
+                  <Button
+                    type="submit"
+                    color="info"
+                    onClick={() => {
+                      addRod(element);
+                    }}
+                  >
+                    Add Rod
+                  </Button>
+                </Section>
+              ))}
             </Modal.Content>
-          ))}
-        </div>
-      </OpenModal>
+          </div>
+        </OpenModal>
       </div>
     );
   };
 
   return (
     <div>
-    <OpenModal modal={{ closeOnBlur: false }} name="Rod">
-      <div className="modal-body">
-        {rods.map((element) => (
-          <Modal.Content>
-          <Section style={{ backgroundColor: "white" }}>
-            <p>
-              <strong>{element.name}</strong>
-              <small>{element.thread}</small> <small>{element.drawing}</small>
-              <br />
-            </p>
-            <Button
-              type="submit"
-              color="info"
-              onClick={() => {
-                addRod(element);
-              }}
-            >
-              Add Rod
-            </Button>
-          </Section>
+      <OpenModal modal={{ closeOnBlur: false }} name="Rod">
+        <div className="modal-body">
+          <Modal.Content className="App">
+            {rods.map((element) => (
+              <Section style={{ backgroundColor: "white" }}>
+                <p>
+                  <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{element.name}</strong>
+                  <br />
+                  <Tag className="is-info is-light">Drawing</Tag>
+                  <small className="horizontalPad">{element.drawing}</small>
+                  <Tag className="is-info is-light">Thread</Tag>
+                  <small className="horizontalPad">{element.thread}</small>
+                  <Tag className="is-info is-light">Rod length</Tag>
+                  <small className="horizontalPad">{element.dimensions.length}</small>
+                    <br />
+                  <Tag className="is-info is-light">Shaft diameter</Tag>
+                  <small className="horizontalPad">{element.dimensions.brushDiameter}</small>
+                  <Tag className="is-info is-light">Rod diameter</Tag>
+                  <small className="horizontalPad">{element.dimensions.rodDiameter}</small>
+                  <br />
+                </p>
+                  <br />
+                <Button
+                  type="submit"
+                  color="info"
+                  onClick={() => {
+                    addRod(element);
+                  }}
+                >
+                  Add Rod
+                </Button>
+              </Section>
+            ))}
           </Modal.Content>
-        ))}
-      </div>
-    </OpenModal>
+        </div>
+      </OpenModal>
     </div>
   );
 };
@@ -446,10 +527,10 @@ export const WiperModal = () => {
           <Modal.Content>
             <Section style={{ backgroundColor: "white" }}>
               <p>
-                <strong>{element.name}</strong> <small>{element.drawing}</small>{" "}
+                <strong>{element.name}</strong> <small>{element.drawing}</small>
                 <small>{element.mold}</small>
                 <br />
-                Something else
+
               </p>
             </Section>
           </Modal.Content>
@@ -476,10 +557,10 @@ export const CapModal = () => {
           <Modal.Content>
             <Section style={{ backgroundColor: "white" }}>
               <p>
-                <strong>{element.name}</strong> <small>{element.drawing}</small>{" "}
+                <strong>{element.name}</strong> <small>{element.drawing}</small>
                 <small>{element.mold}</small>
                 <br />
-                Something else
+
               </p>
             </Section>
           </Modal.Content>
