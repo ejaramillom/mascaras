@@ -8,7 +8,6 @@ import Level from 'react-bulma-components/lib/components/level';
 import Section from 'react-bulma-components/lib/components/section';
 import Box from 'react-bulma-components/lib/components/box';
 import Tag from 'react-bulma-components/lib/components/tag';
-import { Textarea, Field, Control } from 'react-bulma-components/lib/components/form';
 import { getBottles, getBrushes, getRods, getWipers, getCaps } from "../middlewares/services";
 import { useQuery } from "react-query";
 

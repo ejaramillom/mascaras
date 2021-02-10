@@ -2,7 +2,6 @@ import React from 'react';
 import Section from "react-bulma-components/lib/components/section";
 import Box from 'react-bulma-components/lib/components/box';
 import Media from 'react-bulma-components/lib/components/media';
-import Image from 'react-bulma-components/lib/components/image';
 import Tag from 'react-bulma-components/lib/components/tag';
 import Content from 'react-bulma-components/lib/components/content';
 import '../App.css';
