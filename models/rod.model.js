@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 
 const RodSchema = mongoose.Schema({
 	name: {type: String, required: true},
+	property: {type: String, required: true},
 	drawing: {type: String, required: true},
   mold: {type: Number},
   holder: {type: String},
