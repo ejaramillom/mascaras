@@ -1,122 +1,170 @@
 [
 			{
-				"name": "ESCURRIDOR DEL BARBIE",
+				"name": "Escurridor del barbie",
 				"drawing": "3445",
-				"mold": "8090918"
+				"mold": "8090918",
+				"rodDiameter": "2.6",
+				"neckDiameter": "7.38"
 			},
 			{
-				"name": "ESCURRIDOR MSC LPG BARBIE",
+				"name": "Escurridor mascara lpg barbie",
 				"drawing": "3444",
-				"mold": "8090818"
+				"mold": "8090818",
+				"rodDiameter": "4.2",
+				"neckDiameter": "7.38"
 			},
 			{
-				"name": "ESCURRIDOR MSC ESIKA C16 2016 (Ø10,15 x Ø5,5)",
+				"name": "Escurridor mascara esika C16 2016 (D10.15xD5.5)",
 				"drawing": "3254",
-				"mold": "8075916"
+				"mold": "8075916",
+				"rodDiameter": "5.5",
+				"neckDiameter": "10.25"
 			},
 			{
-				"name": "ESCURRIDOR MSC VOGUE 10+ 2019",
+				"name": "Escurridor mascara vogue 10+ 2019",
 				"drawing": "3647",
-				"mold": "8104319"
+				"mold": "8104319",
+				"rodDiameter": "4.2",
+				"neckDiameter": "11.3"
 			},
 			{
-				"name": "ESCURRIDOR Ø10.15XØ4.5mm",
+				"name": "Escurridor D10.15xD4.5",
 				"drawing": "3663",
-				"mold": "8106220"
+				"mold": "8106220",
+				"rodDiameter": "4.5",
+				"neckDiameter": "10.22"
 			},
 			{
-				"name": "ESCURRIDOR Ø10.9 x Ø4.2mm 2018",
+				"name": "Escurridor D10.9xD4.2 2018",
 				"drawing": "3427",
-				"mold": "8089618"
+				"mold": "8089618",
+				"rodDiameter": "4.2",
+				"neckDiameter": "11.15"
 			},
 			{
-				"name": "ESCURRIDOR Ø7.1XØ4.2 2019 MLD2",
+				"name": "Escurridor D7.1xD4.2 2019 molde 2",
 				"drawing": "3583",
-				"mold": "8100119"
+				"mold": "8100119",
+				"rodDiameter": "4.2",
+				"neckDiameter": "7.1"
 			},
 			{
-				"name": "ESCURRIDOR Ø7.1XØ4.2 2019 MLD3",
+				"name": "Escurridor D7.1xD4.2 2019 molde 3",
 				"drawing": "3585",
-				"mold": "8100219"
+				"mold": "8100219",
+				"rodDiameter": "4.2",
+				"neckDiameter": "7.1"
 			},
 			{
-				"name": "ESCURRIDOR Ø7.1XØ4.5",
+				"name": "Escurridor D7.1xD4.5",
 				"drawing": "3642",
-				"mold": "8104619"
+				"mold": "8104619",
+				"rodDiameter": "4.5",
+				"neckDiameter": "7.1"
 			},
 			{
-				"name": "ESCURRIDOR CAUCHO 0,17 x 3,4",
-				"drawing": "3009"
+				"name": "Escurridor caucho 0.17 D7.4xD3.0",
+				"drawing": "3009",
+				"mold": "",
+				"rodDiameter": "3.0",
+				"neckDiameter": "7.4"
 			},
 			{
-				"name": "ESCURRIDOR de 9.5mm X 4,2mm",
+				"name": "Escurridor D9.5xD4.2",
 				"drawing": "3166",
-				"mold": "8069615"
+				"mold": "8069615",
+				"rodDiameter": "4.2",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR de 9.5mm X 4,5mm",
-				"drawing": "3167"
+				"name": "Escurridor D9.5x4D.5",
+				"drawing": "3167",
+				"mold": "8069715",
+				"rodDiameter": "4.5",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR DIAM 7 4.2mm 2013",
-				"drawing": "3049"
+				"name": "Escurridor D7x4.2 2013",
+				"drawing": "3049",
+				"mold": "8059313",
+				"rodDiameter": "4.2",
+				"neckDiameter": "7"
 			},
 			{
-				"name": "ESCURRIDOR DIA 4.5 GEKA REF 329451 (Ø9,6 x Ø4,5)",
-				"drawing": "2839"
+				"name": "Escurridor geka ref 329451 D9.6xD4.5",
+				"drawing": "2839",
+				"mold": "",
+				"rodDiameter": "4.5",
+				"neckDiameter": "9.6"
 			},
 			{
-				"name": "ESCURRIDOR DIA 9.5 x diam 4.2",
+				"name": "Escurridor D9.5xD4.2",
 				"drawing": "2891",
-				"mold": "80103"
+				"mold": "80103",
+				"rodDiameter": "4.2",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR DIA 9.5 x diam 4.5",
+				"name": "Escurridor D9.5xD4.5",
 				"drawing": "2873",
-				"mold": "80378"
+				"mold": "80378",
+				"rodDiameter": "4.5",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR DIA 9.5mm xDIA 5.8mm",
+				"name": "Escurridor D9.5xD5.8",
 				"drawing": "2888",
-				"mold": "80400"
+				"mold": "80400",
+				"rodDiameter": "5.8",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR LABIAL NUEVO FORMATO 2014 (Ø9,5 x Ø4,8)",
+				"name": "Escurridor labial nuevo formato D9.5xD4.8 2014",
 				"drawing": "3041",
-				"mold": "8059013"
+				"mold": "8059013",
+				"rodDiameter": "4.8",
+				"neckDiameter": "9.5"
 			},
 			{
-				"name": "ESCURRIDOR MASCARA ARIANE (Ø10,9 x Ø4,2)",
+				"name": "Escurridor mascara ariane D10.9xD4.2",
 				"drawing": "3139",
-				"mold": "8066714"
+				"mold": "8066714",
+				"rodDiameter": "4.2",
+				"neckDiameter": "10.9"
 			},
 			{
-				"name": "ESCURRIDOR MASCARA ESIKA INNOVACION 2012  (Ø10,15 x Ø4,2)",
+				"name": "Escurridor mascara esika innovacion D10.15xD4.2 2012",
 				"drawing": "2924",
-				"mold": "80452"
+				"mold": "80452",
+				"rodDiameter": "4.2",
+				"neckDiameter": "10.15"
 			},
 			{
-				"name": "ESCURRIDOR MASCARA VOGUE 10+ (Ø10,9 x Ø4,2)",
-				"drawing": "3052"
+				"name": "Escurridor mascara vogue 10+ D10.9xD4.2",
+				"drawing": "3052",
+				"mold": "8059913",
+				"rodDiameter": "4.2",
+				"neckDiameter": "10.9"
 			},
 			{
-				"name": "ESCURRIDOR Ø8-Ø4.2X11",
+				"name": "Escurridor D8.1xD4.2",
 				"drawing": "2913",
-				"mold": "80428"
+				"mold": "80428",
+				"rodDiameter": "4.2",
+				"neckDiameter": "8.1"
 			},
 			{
-				"name": "ESCURRIDOR MASCARA TRIO AVON",
-				"drawing": "2914",
-				"mold": "externo"
-			},
-			{
-				"name": "ESCURRIDOR PREBEL",
+				"name": "Escurridor prebel",
 				"drawing": "2127",
-				"mold": "8606"
+				"mold": "8606",
+				"rodDiameter": "",
+				"neckDiameter": ""
 			},
 			{
-				"name": "ESCURRIDOR SIMEX",
+				"name": "Escurridor simex",
 				"drawing": "2180",
-				"mold": "9019"
+				"mold": "9019",
+				"rodDiameter": "",
+				"neckDiameter": ""
 			}
 ]

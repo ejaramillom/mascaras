@@ -5,7 +5,8 @@ const BottleSchema = mongoose.Schema({
 	drawing: {type: String, required: true},
   mold: {type: Number, required: true},
   depth: {type: Number, required:true},
-  thread: {type: String, required:true}
+  thread: {type: String, required:true},
+  neckDiameter: {type: Number}
 })
 
 const Bottle = mongoose.model("Bottle", BottleSchema);

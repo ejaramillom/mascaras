@@ -37,7 +37,8 @@ router.post("/bottle", async (req, res, next) => {
     "bottle.drawing": req.body.drawing,
     "bottle.mold": req.body.mold,
     "bottle.depth": req.body.depth,
-    "bottle.thread": req.body.thread
+    "bottle.thread": req.body.thread,
+    "bottle.neckDiameter": req.body.neckDiameter
   };
 
   try {
@@ -57,7 +58,8 @@ router.post("/bottle", async (req, res, next) => {
           "bottle.drawing": req.body.drawing,
           "bottle.mold": req.body.mold,
           "bottle.depth": req.body.depth,
-          "bottle.thread": req.body.thread
+          "bottle.thread": req.body.thread,
+          "bottle.neckDiameter": req.body.neckDiameter
         }
       );
       console.log("Bottle updated to build!");
@@ -212,7 +214,9 @@ router.post("/wiper", async (req, res, next) => {
     name: "mascara",
     "wiper.name": req.body.name,
     "wiper.drawing": req.body.drawing,
-    "wiper.mold": req.body.mold
+    "wiper.mold": req.body.mold,
+    "wiper.rodDiameter": req.body.rodDiameter,
+    "wiper.neckDiameter": req.body.neckDiameter
   };
 
   try {
@@ -231,6 +235,8 @@ router.post("/wiper", async (req, res, next) => {
           "wiper.name": req.body.name,
           "wiper.drawing": req.body.drawing,
           "wiper.mold": req.body.mold,
+          "wiper.rodDiameter": req.body.rodDiameter,
+          "wiper.neckDiameter": req.body.neckDiameter
         }
       );
       console.log("wiper updated to build!");

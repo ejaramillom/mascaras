@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const CapSchema = mongoose.Schema({
-
+  name: {type: String, required: true}
 })
 
 const Cap = mongoose.model("cap", CapSchema);
