@@ -30,7 +30,8 @@ export const BottleFilter = (props) => {
       drawing: data.drawing,
       mold: data.mold,
       depth: data.depth,
-      thread: data.thread
+      thread: data.thread,
+      neckDiameter: data.neckDiameter
     })
     .then(function (response) {
       if (response.status === 200) {
@@ -203,7 +204,7 @@ export const BrushFilter = (props) => {
       if (mascaraGap > 1 && mascaraGap < 6) {
         return element;
       } else {
-        return null ;
+        return "";
       }
     });
 
@@ -373,6 +374,9 @@ export const RodFilter = (props) => {
 export const WiperFilter = (props) => {
   const wiper = props.wiper;
   const wipers = props.wipers;
+  const rod = props.rod;
+  const bottle = props.bottle;
+  const brush = props.brush;
   const setBuildClick = props.setBuildClick;
   const buildClick = props.buildClick;
 
@@ -384,6 +388,8 @@ export const WiperFilter = (props) => {
         name: data.name,
         drawing: data.drawing,
         mold: data.mold,
+        rodDiameter: data.rodDiameter,
+        neckDiameter: data.neckDiameter
       })
       .then(function (response) {
         if (response.status === 200) {
@@ -427,7 +433,33 @@ export const WiperFilter = (props) => {
     return (
       <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
     );
-  }
+  } else if (bottle && bottle.neckDiameter){
+      const filteredWipers = wipers.filter( element => {
+        let wiperBottleDiff =  (Number(element.neckDiameter) - Number(bottle.neckDiameter));
+        if (wiperBottleDiff > -0.3 && wiperBottleDiff < 0.3) {
+          return element;
+        } else {
+          return "";
+        }
+      });
+
+      return (
+        <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
+      );
+    } else if (rod && rod.thread){
+        const filteredWipers = wipers.filter( element => {
+          let wiperBottleDiff =  (Number(element.rodDiameter) - Number(rod.dimensions.rodDiameter));
+          if (wiperBottleDiff > -0.6 && wiperBottleDiff < 0) {
+            return element;
+          } else {
+            return "";
+          }
+        });
+
+        return (
+          <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
+        );
+      }
 
   return (
     <div>

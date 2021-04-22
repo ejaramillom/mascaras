@@ -258,7 +258,7 @@ const Filter = () => {
             <RodFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush}></RodFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
-            <WiperFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} wiper={wiper} wipers={wipers}></WiperFilter>
+            <WiperFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} wiper={wiper} wipers={wipers}></WiperFilter>
           </Tile>
           {/* <Tile renderAs="article" kind="child" notification>
             <WiperFilter></WiperFilter>

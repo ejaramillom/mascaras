@@ -21,26 +21,29 @@ export const BottleDisplay = (props) => {
               <Heading size={7} renderAs="h6">{element.name}
                 <br/>
                 <br/>
-                <Tag color="dark" className="App"> Drawing </Tag>
-                <Tag color="info"> {element.drawing}</Tag>
+                  <Tag color="dark" className="App"> Drawing </Tag>
+                  <Tag color="info"> {element.drawing}</Tag>
                 <br/>
-                <Tag color="dark"> Thread </Tag>
-                <Tag color="info"> {element.thread}</Tag>
-              <br/>
-                <Tag color="dark"> Depth </Tag>
-                <Tag color="info"> {element.depth}</Tag>
-              <br/>
-              <br/>
-              <Button
-                type="submit"
-                color="info"
-                onClick={() => {
-                  props.addBottleClick(element);
-                }}
-                size="small"
-              >
-                Add Bottle
-              </Button>
+                  <Tag color="dark"> Thread </Tag>
+                  <Tag color="info"> {element.thread}</Tag>
+                <br/>
+                  <Tag color="dark"> Depth </Tag>
+                  <Tag color="info"> {element.depth}</Tag>
+                <br/>
+                  <Tag color="dark"> Neck </Tag>
+                  <Tag color="info"> {element.neckDiameter}</Tag>
+                <br/>
+                <br/>
+                <Button
+                  type="submit"
+                  color="info"
+                  onClick={() => {
+                    props.addBottleClick(element);
+                  }}
+                  size="small"
+                >
+                  Add Bottle
+                </Button>
               </Heading>
             </Tile>
           </Tile>
@@ -169,6 +172,12 @@ export const WiperDisplay = (props) => {
               <br/>
               <Tag color="dark"> Drawing </Tag>
               <Tag color="info"> {element.drawing}</Tag>
+              <br/>
+              <Tag color="dark"> Neck </Tag>
+              <Tag color="info"> {element.neckDiameter}</Tag>
+              <br/>
+              <Tag color="dark"> Wipe </Tag>
+              <Tag color="info"> {element.rodDiameter}</Tag>
               <br/>
               <br/>
               <Button
