@@ -292,6 +292,47 @@ export const RodFilter = (props) => {
       <RodDisplay rodsToDisplay={filteredRods} addRodClick={addRodClick} ></RodDisplay>
     );
 
+  } else if (brush && brush.type && bottle && bottle.thread && bottle.depth){
+    const filteredRods = rods.filter( element => {
+      let brushRodDiff =  Number(element.dimensions.brushDiameter) - Number(brush.shaftDiameter);
+      let depthDiff = ( Number(bottle.depth) - (Number(element.dimensions.length) + Number(brush.brushLength)) );
+      if (element.thread && (depthDiff > 0)) {
+        let wipeDelta =  Number(brush.brushDiameter) - Number(element.dimensions.rodDiameter) ;
+        if (brush.type === "INYECTADO" && wipeDelta > 0.5 && wipeDelta < 4.8) {
+          if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
+            return element;
+          } else {
+            return "";
+          }
+        }
+        if (brush.type === "NYLON" && wipeDelta > 0.8 && wipeDelta < 6.4) {
+          if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
+            return element;
+          } else {
+            return "";
+          }
+        }
+        if (brush.type === "LIP GLOSS" && wipeDelta > -2 && wipeDelta < 3) {
+          if (brushRodDiff > 0 && brushRodDiff < 0.2){
+            return element;
+          } else {
+            return "";
+          }
+        }
+        if (brush.type === "DELINEADOR" && wipeDelta > -2 && wipeDelta < -1) {
+          if (brushRodDiff > -0.05 && brushRodDiff < 0.1){
+            return element;
+          } else {
+            return "";
+          }
+        }
+      }
+    });
+
+    return (
+      <RodDisplay rodsToDisplay={filteredRods} addRodClick={addRodClick} ></RodDisplay>
+    );
+
   } else if (bottle && bottle.thread && bottle.depth){
     const filteredRods = rods.filter( element => {
       let depthDiff = (Number(bottle.depth) - Number(element.dimensions.length));
@@ -376,7 +417,6 @@ export const WiperFilter = (props) => {
   const wipers = props.wipers;
   const rod = props.rod;
   const bottle = props.bottle;
-  const brush = props.brush;
   const setBuildClick = props.setBuildClick;
   const buildClick = props.buildClick;
 
@@ -446,20 +486,34 @@ export const WiperFilter = (props) => {
       return (
         <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
       );
-    } else if (rod && rod.thread){
-        const filteredWipers = wipers.filter( element => {
-          let wiperBottleDiff =  (Number(element.rodDiameter) - Number(rod.dimensions.rodDiameter));
-          if (wiperBottleDiff > -0.6 && wiperBottleDiff < 0) {
-            return element;
-          } else {
-            return "";
-          }
-        });
+  } else if (rod && rod.thread){
+      const filteredWipers = wipers.filter( element => {
+        let wiperRodDiff =  (Number(element.rodDiameter) - Number(rod.dimensions.rodDiameter));
+        if (wiperRodDiff > -0.6 && wiperRodDiff < 0) {
+          return element;
+        } else {
+          return "";
+        }
+      });
 
-        return (
-          <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
-        );
-      }
+      return (
+        <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
+      );
+  } else if (rod && rod.thread && bottle && bottle.neckDiameter){
+      const filteredWipers = wipers.filter( element => {
+        let wiperRodDiff =  (Number(element.rodDiameter) - Number(rod.dimensions.rodDiameter));
+        let wiperBottleDiff =  (Number(element.neckDiameter) - Number(bottle.neckDiameter));
+        if (wiperRodDiff > -0.6 && wiperRodDiff < 0 && wiperBottleDiff > -0.3 && wiperBottleDiff < 0.3) {
+          return element;
+        } else {
+          return "";
+        }
+      });
+
+      return (
+        <WiperDisplay wipersToDisplay={filteredWipers} addWiperClick={addWiperClick} ></WiperDisplay>
+      );
+    }
 
   return (
     <div>
