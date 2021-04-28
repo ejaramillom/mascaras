@@ -73,6 +73,57 @@ router.post("/bottle", async (req, res, next) => {
 
 });
 
+router.get("/cap", async (req, res, next) => {
+  try {
+    const cap = await Bottle.find();
+    console.log(">");
+    console.log("succesfully found caps list");
+    return res.send(cap);
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
+
+router.post("/cap", async (req, res, next) => {
+  const data = {
+    name: "mascara",
+    "cap.name": req.body.name,
+    "cap.drawing": req.body.drawing,
+    "cap.mold": req.body.mold,
+    "cap.thread": req.body.thread,
+  };
+
+  try {
+    const already_cap = await Build.findOne({
+      name: "mascara",
+    });
+    if (already_cap === null) {
+      const build = new Build(data);
+      await build.save();
+      console.log("Cap added to build!");
+      res.status(200).send("Cap added to your build list!");
+    } else if (already_cap)  {
+      const build = await Build.updateOne(
+        { name: "mascara" },
+        {
+          "cap.name": req.body.name,
+          "cap.drawing": req.body.drawing,
+          "cap.mold": req.body.mold,
+          "cap.thread": req.body.thread,
+        }
+      );
+      console.log("Cap updated to build!");
+      res.status(200).send("Cap updated in build list!");
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+    return;
+  }
+
+});
+
 router.get("/build", async (req, res, next) => {
   try {
     const build = await Build.find();
@@ -140,18 +191,6 @@ router.post("/brush", async (req, res, next) => {
     return;
   }
 
-});
-
-router.get("/cap", async (req, res, next) => {
-  try {
-    const cap = await Cap.find();
-    console.log(">");
-    console.log("succesfully found caps list");
-    return res.send(cap);
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
 });
 
 router.get("/rod", async (req, res, next) => {

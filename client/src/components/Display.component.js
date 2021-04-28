@@ -199,3 +199,43 @@ export const WiperDisplay = (props) => {
   );
 }
 //---------------- Wiper filter
+
+//---------------- Cap filter
+export const CapDisplay = (props) => {
+  return (
+    <div>
+    <ExportCSV csvData={props.capsToDisplay} fileName="caps" />
+    <br />
+    <br />
+      {props.capsToDisplay.map((element) => (
+        <Tile kind="ancestor" className="App">
+          <Tile kind="parent">
+            <Tile renderAs="article" kind="child" notification color="light">
+            <Heading size={7} renderAs="h6" >{element.name}
+              <br/>
+              <br/>
+              <Tag color="dark"> Drawing </Tag>
+              <Tag color="info"> {element.drawing}</Tag>
+              <br/>
+              <Tag color="dark"> Thread </Tag>
+              <Tag color="info"> {element.thread}</Tag>
+              <br/>
+              <Button
+                type="submit"
+                color="info"
+                size="small"
+                onClick={() => {
+                  props.addCapClick(element);
+                }}
+              >
+                Add Cap
+              </Button>
+            </Heading>
+            </Tile>
+          </Tile>
+        </Tile>
+      ))}
+    </div>
+  );
+}
+//---------------- Cap filter

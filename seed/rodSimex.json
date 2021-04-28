@@ -1257,7 +1257,7 @@
 		"mold": "8097318",
 		"holder": "8553518",
 		"cavity": "8",
-		"thread": "R15D",
+		"thread": "R15",
 		"dimensions": {
 			"length": "55.07",
 			"rodDiameter": "4.3",
@@ -1440,7 +1440,7 @@
 		"mold": "8097518",
 		"holder": "8553518",
 		"cavity": "8",
-		"thread": "R15D",
+		"thread": "R15",
 		"dimensions": {
 			"length": "55.8",
 			"rodDiameter": "5.6",
@@ -3000,7 +3000,7 @@
 		"name": "Tpv redondo cepillo inyectado R15Dx66LxD2.82",
 		"mold": "8087817",
 		"holder": "C020",
-		"thread": "R15D",
+		"thread": "R15",
 		"dimensions": {
 			"length": "66",
 			"rodDiameter": "2.82",

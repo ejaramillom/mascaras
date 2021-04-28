@@ -7,7 +7,8 @@ import {
   BottleFilter,
   BrushFilter,
   RodFilter,
-  WiperFilter
+  WiperFilter,
+  CapFilter
 } from './PartFilter.component';
 import axios from "axios";
 import '../App.css';
@@ -20,6 +21,8 @@ const Filter = () => {
 
   const [bottle, setBottle] = useState([]);
   const [bottles, setBottles] = useState([]);
+  const [cap, setCap] = useState([]);
+  const [caps, setCaps] = useState([]);
   const [rod, setRod] = useState([]);
   const [rods, setRods] = useState([]);
   const [wiper, setWiper] = useState([]);
@@ -27,6 +30,7 @@ const Filter = () => {
   const [brush, setBrush] = useState([]);
   const [brushes, setBrushes] = useState([]);
   const [claim, setClaim] = useState("");
+  const [category, setCategory] = useState("");
   const [build, setBuild] = useState([]);
   const [buildClick, setBuildClick] = useState(false);
 
@@ -60,6 +64,11 @@ const Filter = () => {
         setWiper(data[0].wiper);
       } else {
         setWiper([])
+      }
+      if (data[0] && data[0].cap) {
+        setCap(data[0].cap);
+      } else {
+        setCap([])
       }
     }
 
@@ -95,17 +104,27 @@ const Filter = () => {
       setWipers(data);
     }
 
+    const fetchCaps = async () => {
+      const {data} = await axios.get("/cap")
+      .catch(function (error) {
+        console.log(error)
+      });
+      setCaps(data);
+    }
+
     fetchBuild();
     fetchBottles();
     fetchBrushes();
     fetchRods();
     fetchWipers();
+    fetchCaps();
 
     if (!build[0]) {
       setWiper([]);
       setRod([]);
       setBrush([]);
       setBottle([]);
+      setCap([]);
     }
 
 // no borrar esta linea
@@ -125,6 +144,7 @@ const Filter = () => {
         setRod([]);
         setWiper([]);
         setBrush([]);
+        setCap([]);
         alert("Build deleted!");
       } else {
         const err = new Error(response.error);
@@ -241,6 +261,8 @@ const Filter = () => {
               <Tag color="light"> {rod.name}</Tag>
               <Tag color="dark"> Wiper </Tag>
               <Tag color="light"> {wiper.name}</Tag>
+              <Tag color="dark"> Cap </Tag>
+              <Tag color="light"> {cap.name}</Tag>
             </Tag.Group>
           </Tile>
         </Tile>
@@ -259,6 +281,9 @@ const Filter = () => {
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
             <WiperFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} wiper={wiper} wipers={wipers}></WiperFilter>
+          </Tile>
+          <Tile renderAs="article" kind="child" notification color="white">
+            <CapFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} cap={cap} caps={caps}></CapFilter>
           </Tile>
           {/* <Tile renderAs="article" kind="child" notification>
             <WiperFilter></WiperFilter>

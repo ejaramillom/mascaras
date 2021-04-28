@@ -4,6 +4,7 @@ import {
   BrushDisplay,
   RodDisplay,
   WiperDisplay,
+  CapDisplay
 } from './Display.component';
 import {
   FilterButton,
@@ -520,6 +521,105 @@ export const WiperFilter = (props) => {
       <FilterButton value={search} onChange={e => onChange(e.target.value)} ></FilterButton>
       <br />
       <WiperDisplay wipersToDisplay={search.length < 1 ? wipers : filterDisplay} addWiperClick={addWiperClick} ></WiperDisplay>
+    </div>
+  );
+};
+
+//---------------- Wiper filter
+
+//---------------- Cap filter
+
+export const CapFilter = (props) => {
+  const cap = props.cap;
+  const caps = props.caps;
+  const rod = props.rod;
+  const bottle = props.bottle;
+  const setBuildClick = props.setBuildClick;
+  const buildClick = props.buildClick;
+
+  const [search, setSearch] = useState("");
+  const [filterDisplay, setFilterDisplay] = useState([caps]);
+
+  const addCap = async (data) => {
+    await axios.post("/cap", {
+        name: data.name,
+        drawing: data.drawing,
+        mold: data.mold,
+        thread: data.thread,
+      })
+      .then(function (response) {
+        if (response.status === 200) {
+          alert("Cap added to the list!");
+          console.log("Cap succesfully added");
+        } else {
+          const err = new Error(response.error);
+          console.log(err);
+          throw err;
+        }
+      })
+      .catch(function (error) {
+        alert(error);
+      });
+  };
+
+  const addCapClick = (element) => {
+    addCap(element);
+    setBuildClick(!buildClick);
+  };
+
+  const onChange = (e) => {
+    setSearch(e);
+    let oldList = caps;
+    if(search !== "") {
+      let newList =[];
+      newList = oldList.filter( element => {
+        return element.name.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      });
+      setFilterDisplay(newList)
+    } else {
+      setFilterDisplay(oldList)
+    }
+  }
+
+   if (cap && cap.name){
+    const filteredCaps = caps.filter( element => {
+      return element.name.toLowerCase().indexOf(cap.name.toLowerCase()) !== -1;
+    });
+
+    return (
+      <CapDisplay capsToDisplay={filteredCaps} addCapClick={addCapClick} ></CapDisplay>
+    );
+  } else if (rod && rod.thread && bottle && bottle.thread && bottle.thread === rod.thread){
+    const filteredCaps = caps.filter( element => {
+      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+    });
+
+    return (
+      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+    );
+  } else if (bottle && bottle.thread){
+    const filteredCaps = caps.filter( element => {
+      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+    });
+
+    return (
+      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+    );
+  } else if (rod && rod.thread){
+    const filteredCaps = caps.filter( element => {
+      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+    });
+
+    return (
+      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+    );
+  }
+
+  return (
+    <div>
+      <FilterButton value={search} onChange={e => onChange(e.target.value)} ></FilterButton>
+      <br />
+      <CapDisplay capsToDisplay={search.length < 1 ? caps : filterDisplay} addCapClick={addCapClick} ></CapDisplay>
     </div>
   );
 };

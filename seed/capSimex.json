@@ -1,0 +1,134 @@
+[
+	{
+	  "name": "Sobretapa mascara ariane",
+	  "drawing": "3094",
+	  "mold": "8066514",
+	  "thread": "R15"
+	},
+	{
+    "name": "Sobretapa redonda concava",
+	  "drawing": "3313",
+	  "mold": "8002803",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa cuadrada esbelta pes del",
+	  "drawing": "3328",
+	  "mold": "9830",
+	  "thread": "R11"
+  },
+	{
+	  "name": "Sobretapa cuadrada lpg pes del san",
+	  "drawing": "3376",
+	  "mold": "9834",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda V14 8 cavidades 2017",
+	  "drawing": "3387",
+	  "mold": "8087117",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda V14 8 cavidades 2017",
+	  "drawing": "3388",
+	  "mold": "8087117",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda V14 ABS",
+	  "drawing": "3414",
+	  "mold": "8036610",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda V14 8 cav ABS",
+	  "drawing": "3468",
+	  "mold": "8087117",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa R15 iluminadora ABS",
+	  "drawing": "3564",
+	  "mold": "9504",
+	  "thread": "R15"
+	},
+	{
+	  "name": "Sobretapa redonda penta PSAI",
+	  "drawing": "3612",
+	  "mold": "8004304",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda penta SAN",
+	  "drawing": "3659",
+	  "mold": "8004304",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa generica ariane 2020",
+	  "drawing": "3669",
+	  "mold": "8106420",
+	  "thread": "R15"
+	},
+	{
+	  "name": "Sobretapa delgada pes gen R15 2020",
+	  "drawing": "3670",
+	  "mold": "8106520",
+	  "thread": "R15"
+	},
+	{
+	  "name": "Sobretapa redonda V14 8 cav 2017 PP",
+	  "drawing": "3696",
+	  "mold": "8087117",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa pes gen R13 2020",
+	  "drawing": "3716",
+	  "mold": "8110021",
+	  "thread": "R13"
+	},
+	{
+	  "name": "Sobretapa redonda iluminador pes",
+	  "drawing": "C4017",
+	  "mold": "9504",
+	  "thread": "R13"
+	},
+	{
+	  "name": "Sobretapa cuadrada esbelta pes del",
+	  "drawing": "C4032",
+	  "mold": "9830",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa cuadrada",
+	  "drawing": "C4033",
+	  "mold": "9834",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda V14",
+	  "drawing": "C4037",
+	  "mold": "8036610",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda concava",
+	  "drawing": "C4227",
+	  "mold": "8002803",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda penta",
+	  "drawing": "C4229",
+	  "mold": "8004304",
+	  "thread": "R11"
+	},
+	{
+	  "name": "Sobretapa redonda convexa",
+	  "drawing": "C4242",
+	  "mold": "8004804",
+	  "thread": "R11"
+	}
+]

@@ -3,7 +3,10 @@ const mongoose = require ( "mongoose" );
 const routes = require( "./routes" );
 
 //conexion
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost:27017/mascaras",  { useNewUrlParser: true });
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost:27017/mascaras",  {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+ });
 mongoose.set( "useFindAndModify", false );
 
 const app = express();

@@ -93,6 +93,20 @@ const MascaraBuild = () => {
               </Content>
             : "" }
           </Media.Item>
+          <Media.Item>
+            {element.cap ?
+              <Content>
+                <p>
+                <Tag color="info">Name</Tag>
+                  <strong className="horizontalPad">{ element.cap.name }</strong>
+                <Tag color="info">Mold</Tag>
+                  <small className="horizontalPad">{ element.cap.mold }</small>
+                <Tag color="info">Thread</Tag>
+                  <small className="horizontalPad">{ element.cap.thread }</small>
+                </p>
+              </Content>
+            : "" }
+          </Media.Item>
         </Media>
         )}
       </Box>
