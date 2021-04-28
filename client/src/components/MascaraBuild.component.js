@@ -6,7 +6,7 @@ import Tag from 'react-bulma-components/lib/components/tag';
 import Content from 'react-bulma-components/lib/components/content';
 import '../App.css';
 import { useQuery } from "react-query";
-import { getBuild} from "../middlewares/services";
+import { getBuild } from "../middlewares/services";
 
 const MascaraBuild = () => {
   const { isLoading, error, data } = useQuery("build", getBuild);
@@ -89,20 +89,6 @@ const MascaraBuild = () => {
                   <small className="horizontalPad">{ element.wiper.mold }</small>
                 <Tag color="info">drawing</Tag>
                   <small className="horizontalPad">{ element.wiper.drawing }</small>
-                </p>
-              </Content>
-            : "" }
-          </Media.Item>
-          <Media.Item>
-            {element.cap ?
-              <Content>
-                <p>
-                <Tag color="info">Name</Tag>
-                  <strong className="horizontalPad">{ element.cap.name }</strong>
-                <Tag color="info">Mold</Tag>
-                  <small className="horizontalPad">{ element.cap.mold }</small>
-                <Tag color="info">Thread</Tag>
-                  <small className="horizontalPad">{ element.cap.thread }</small>
                 </p>
               </Content>
             : "" }

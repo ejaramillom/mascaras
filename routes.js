@@ -75,7 +75,7 @@ router.post("/bottle", async (req, res, next) => {
 
 router.get("/cap", async (req, res, next) => {
   try {
-    const cap = await Bottle.find();
+    const cap = await Cap.find();
     console.log(">");
     console.log("succesfully found caps list");
     return res.send(cap);

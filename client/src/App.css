@@ -142,6 +142,10 @@
   padding-left: 1rem;
 }
 
+.leftPad {
+  margin-left: 1rem;
+}
+
 .boxBackground {
   background-color: #23d160;
 }

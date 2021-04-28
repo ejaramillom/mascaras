@@ -169,11 +169,10 @@ const Filter = () => {
     <div>
       <Tile kind="ancestor" className="App">
         <Tile kind="parent" className="space">
-          <Tile renderAs="article" kind="child" notification className="is-white border verticalPad">
-          <Button.Group size="small">
+          <Tile renderAs="article" kind="child" notification className="is-white verticalPad">
             <Button
               type="submit"
-              className="is-danger is-light"
+              className="is-success is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("");
@@ -183,7 +182,7 @@ const Filter = () => {
             </Button>
             <Button
               type="submit"
-              className="is-link is-light"
+              className="is-link is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("definition");
@@ -193,7 +192,7 @@ const Filter = () => {
             </Button>
             <Button
               type="submit"
-              className="is-link is-light"
+              className="is-link is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("volumizing");
@@ -203,7 +202,7 @@ const Filter = () => {
             </Button>
             <Button
               type="submit"
-              className="is-link is-light"
+              className="is-link is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("lengthening");
@@ -213,7 +212,7 @@ const Filter = () => {
             </Button>
             <Button
               type="submit"
-              className="is-link is-light"
+              className="is-link is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("plumping");
@@ -223,7 +222,7 @@ const Filter = () => {
             </Button>
             <Button
               type="submit"
-              className="is-link is-light"
+              className="is-link is-light leftPad"
               size="small"
               onClick={() => {
                 setClaim("curling");
@@ -231,18 +230,74 @@ const Filter = () => {
             >
               Curling
             </Button>
-          </Button.Group>
+
+            <br />
+            <br />
+
             {claim ?
               <div>
                 <Tag color="dark"> { claim } </Tag>
               </div>
-              : "" }
-          </Tile>
-          <Tile renderAs="article" kind="child" notification className="is-white border">
-            <ExportCSV csvData={build} fileName="build"/>
+            : "" }
+
+            <br />
+
             <Button
               type="submit"
-              className="is-danger is-light"
+              className="is-success is-light leftPad"
+              size="small"
+              onClick={() => {
+                setCategory("");
+              }}
+            >
+              No category
+            </Button>
+            <Button
+              type="submit"
+              className="is-link is-light leftPad"
+              size="small"
+              onClick={() => {
+                setCategory("NYLON");
+              }}
+            >
+              Nylon
+            </Button>
+            <Button
+              type="submit"
+              className="is-link is-light leftPad"
+              size="small"
+              onClick={() => {
+                setCategory("INYECTADO");
+              }}
+            >
+              Injected
+            </Button>
+            <Button
+              type="submit"
+              className="is-link is-light leftPad"
+              size="small"
+              onClick={() => {
+                setCategory("DELINEADOR");
+              }}
+            >
+              Eyeliner
+            </Button>
+
+            <br />
+            <br />
+
+            {category ?
+              <div>
+                <Tag color="dark"> { category } </Tag>
+              </div>
+            : "" }
+
+          </Tile>
+
+          <Tile renderAs="article" kind="child" notification className="is-white">
+            <Button
+              type="submit"
+              className="is-danger is-light leftPad"
               size="small"
               onClick={() => {
                 removeBuildClick();
@@ -268,13 +323,15 @@ const Filter = () => {
         </Tile>
       </Tile>
 
+      <hr></hr>
+
       <Tile kind="ancestor">
         <Tile kind="parent" className="App">
           <Tile renderAs="article" kind="child" notification color="white">
             <BottleFilter rod={rod} brush={brush} bottle={bottle} bottles={bottles} setBuildClick={setBuildClick} buildClick={buildClick}></BottleFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white" className="center">
-            <BrushFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} brushes={brushes} claim={claim}></BrushFilter>
+            <BrushFilter rod={rod} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush} brushes={brushes} claim={claim} category={category}></BrushFilter>
           </Tile>
           <Tile renderAs="article" kind="child" notification color="white">
             <RodFilter rod={rod} rods={rods} bottle={bottle} setBuildClick={setBuildClick} buildClick={buildClick} brush={brush}></RodFilter>

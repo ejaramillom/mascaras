@@ -117,6 +117,7 @@ export const BrushFilter = (props) => {
   const brush = props.brush;
   const brushes = props.brushes;
   const claim = props.claim;
+  const category = props.category;
   const rod = props.rod;
   const bottle = props.bottle;
   const setBuildClick = props.setBuildClick;
@@ -178,6 +179,59 @@ export const BrushFilter = (props) => {
       <BrushDisplay brushesToDisplay={filteredBrushes} addBrushClick={addBrushClick} ></BrushDisplay>
     );
 
+  } else if (claim && category){
+    const filteredBrushes = brushes.filter( element => {
+      if (category === "NYLON" && element.type === category) {
+        if (claim === "definition" && element.claim.definition === true) {
+          return element;
+        } else if (claim === "volumizing" && element.claim.volumizing === true)  {
+          return element;
+        } else if (claim === "lengthening" && element.claim.lengthening === true) {
+          return element;
+        } else if (claim === "curling" && element.claim.curling === true) {
+          return element;
+        } else if (claim === "plumping" && element.claim.plumping === true) {
+          return element;
+        } else {
+          return "";
+        }
+      } else if (category === "DELINEADOR" && element.type === category)  {
+        if (claim === "definition" && element.claim.definition === true) {
+          return element;
+        } else if (claim === "volumizing" && element.claim.volumizing === true)  {
+          return element;
+        } else if (claim === "lengthening" && element.claim.lengthening === true) {
+          return element;
+        } else if (claim === "curling" && element.claim.curling === true) {
+          return element;
+        } else if (claim === "plumping" && element.claim.plumping === true) {
+          return element;
+        } else {
+          return "";
+        }
+      } else if (category === "INYECTADO" && element.type === category) {
+        if (claim === "definition" && element.claim.definition === true) {
+          return element;
+        } else if (claim === "volumizing" && element.claim.volumizing === true)  {
+          return element;
+        } else if (claim === "lengthening" && element.claim.lengthening === true) {
+          return element;
+        } else if (claim === "curling" && element.claim.curling === true) {
+          return element;
+        } else if (claim === "plumping" && element.claim.plumping === true) {
+          return element;
+        } else {
+          return "";
+        }
+      } else {
+        return "";
+      }
+    });
+
+    return (
+      <BrushDisplay brushesToDisplay={filteredBrushes} addBrushClick={addBrushClick} ></BrushDisplay>
+    );
+
   } else if (claim){
     const filteredBrushes = brushes.filter( element => {
       if (claim === "definition" && element.claim.definition === true) {
@@ -189,6 +243,23 @@ export const BrushFilter = (props) => {
       } else if (claim === "curling" && element.claim.curling === true) {
         return element;
       } else if (claim === "plumping" && element.claim.plumping === true) {
+        return element;
+      } else {
+        return "";
+      }
+    });
+
+    return (
+      <BrushDisplay brushesToDisplay={filteredBrushes} addBrushClick={addBrushClick} ></BrushDisplay>
+    );
+
+  } else if (category) {
+    const filteredBrushes = brushes.filter( element => {
+      if (category === "NYLON" && element.type === category) {
+        return element;
+      } else if (category === "DELINEADOR" && element.type === category)  {
+        return element;
+      } else if (category === "INYECTADO" && element.type === category) {
         return element;
       } else {
         return "";
@@ -297,7 +368,7 @@ export const RodFilter = (props) => {
     const filteredRods = rods.filter( element => {
       let brushRodDiff =  Number(element.dimensions.brushDiameter) - Number(brush.shaftDiameter);
       let depthDiff = ( Number(bottle.depth) - (Number(element.dimensions.length) + Number(brush.brushLength)) );
-      if (element.thread && (depthDiff > 0)) {
+      if (element.thread === bottle.thread && (depthDiff > 0)) {
         let wipeDelta =  Number(brush.brushDiameter) - Number(element.dimensions.rodDiameter) ;
         if (brush.type === "INYECTADO" && wipeDelta > 0.5 && wipeDelta < 4.8) {
           if (brushRodDiff > 0.05 && brushRodDiff < 0.15){
@@ -591,27 +662,27 @@ export const CapFilter = (props) => {
     );
   } else if (rod && rod.thread && bottle && bottle.thread && bottle.thread === rod.thread){
     const filteredCaps = caps.filter( element => {
-      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+      return rod.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
     });
 
     return (
-      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+      <CapDisplay capsToDisplay={filteredCaps} addCapClick={addCapClick} ></CapDisplay>
     );
   } else if (bottle && bottle.thread){
     const filteredCaps = caps.filter( element => {
-      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+      return bottle.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
     });
 
     return (
-      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+      <CapDisplay capsToDisplay={filteredCaps} addCapClick={addCapClick} ></CapDisplay>
     );
   } else if (rod && rod.thread){
     const filteredCaps = caps.filter( element => {
-      return cap.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
+      return rod.thread.toLowerCase().indexOf(element.thread.toLowerCase()) !== -1;
     });
 
     return (
-      <BottleDisplay bottlesToDisplay={filteredBottles} addBottleClick={addBottleClick} ></BottleDisplay>
+      <CapDisplay capsToDisplay={filteredCaps} addCapClick={addCapClick} ></CapDisplay>
     );
   }
 

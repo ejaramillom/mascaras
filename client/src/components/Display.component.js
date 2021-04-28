@@ -220,6 +220,7 @@ export const CapDisplay = (props) => {
               <Tag color="dark"> Thread </Tag>
               <Tag color="info"> {element.thread}</Tag>
               <br/>
+              <br/>
               <Button
                 type="submit"
                 color="info"

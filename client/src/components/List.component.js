@@ -76,7 +76,7 @@ export const Brush = () => {
             <Box>
               <Media>
                 <Media.Item renderAs="figure" position="left">
-                  <Image size={64} alt="64x64" src="http://bulma.io/images/placeholders/128x128.png" />
+                  <Image size={128} alt="128x128" src={require(`../images/${element.brush}.jpg`)} />
                 </Media.Item>
                 <Media.Item>
                   <Content>
@@ -245,9 +245,39 @@ export const Cap = () => {
   return (
     <div className="App">
       <header className="App-header">
-      { data.map( element =>
-        <li key = { element.name }>{ element.name }</li>
-      )}
+      <Section>
+        { data.map( element =>
+            <Box>
+              <Media>
+                <Media.Item renderAs="figure" position="left">
+                  <Image size={64} alt="64x64" src="http://bulma.io/images/placeholders/128x128.png" />
+                </Media.Item>
+                <Media.Item>
+                  <Content>
+                    <p>
+                      <Tag color="link"> Name </Tag>
+                      <strong className="horizontalPad">{element.name}</strong>
+                      <Tag color="info"> Drawing </Tag>
+                      <small className="horizontalPad">{element.drawing}</small>
+                      <Tag color="info"> Mold </Tag>
+                      <small className="horizontalPad">{element.mold}</small>
+                      <Tag color="info"> Thread </Tag>
+                      <small className="horizontalPad">{element.thread}</small>
+                      <br />
+                    </p>
+                  </Content>
+                  <Level breakpoint="mobile">
+                    <Level.Side align="left">
+                      <Button link size="small">Add</Button>
+                      <Button link size="small">Download</Button>
+                    </Level.Side>
+                  </Level>
+                </Media.Item>
+              </Media>
+            </Box>
+
+        )}
+        </Section>
       </header>
     </div>
   );
